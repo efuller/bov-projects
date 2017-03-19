@@ -1,0 +1,26 @@
+{
+  "name": "md-projects",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/efuller/md-projects.git",
+  "author": "Eric Fuller <info@glassmoonmedia.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "NODE_ENV=production webpack -p --config webpack.prod.config.js --progress --colors"
+  },
+  "dependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "css-loader": "^0.27.3",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "latest": "^0.2.0",
+    "node-sass": "^4.5.0",
+    "postcss-loader": "^1.3.3",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.14.1",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
+  }
+}
