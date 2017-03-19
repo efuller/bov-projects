@@ -1,6 +1,5 @@
 .signup {
-	background: url(/images/signup-c.jpg) no-repeat center center;
-	background-size: cover;
+	background-color: #494b2c;
 
 	html & {
 		height: auto;
@@ -56,7 +55,6 @@
 	}
 
 	select {
-		background: url(/assets/images/arrow-down-signup.svg) no-repeat right center;
 		border-color: rgba(255, 193, 7, 0.4);
 		color: rgba(232,145,30, 0.8);
 	}

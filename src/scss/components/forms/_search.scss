@@ -1,10 +1,14 @@
 .search {
-	h1 {
-		color: #ffffff;
-		font-size: 48px;
-		margin-top: 0;
-		padding: 30px;
-		text-shadow: 2px 2px 10px rgba(0,0,0, 0.6);;
+	.page-hero {
+		background-color: #226a25;
+
+		h1 {
+			color: #ffffff;
+			font-size: 48px;
+			margin-top: -120px;
+			padding: 30px;
+			text-shadow: 2px 2px 10px rgba(0,0,0, 0.6);;
+		}
 	}
 
 	input[type="submit"],
@@ -29,7 +33,6 @@
 	}
 
 	.field-group.species select {
-		background: #ffffff url(/images/arrow-down.svg) no-repeat right center;
 		border-radius: 0;
 	}
 
@@ -52,8 +55,6 @@
 	}
 
 	.page-hero {
-		background: url(/images/search-c.jpg) no-repeat center center;
-		background-size: cover;
 		height: 500px;
 		position: relative;
 	}

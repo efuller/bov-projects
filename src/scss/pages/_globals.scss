@@ -145,20 +145,3 @@ body {
 	text-decoration: none;
 	text-transform: uppercase;
 }
-
-.page-hero-home-link:before {
-	background: url(/images/arrow-left.svg) no-repeat center center;
-	background-size: 20px;
-	content: '';
-	display: block;
-	height: 20px;
-	left: 0;
-	position: absolute;
-	top: 10px;
-	transition: left 0.2s ease;
-	width: 20px;
-}
-
-.page-hero-home-link:hover:before {
-	left: -2px;
-}
