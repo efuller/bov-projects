@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../../../assets/css/style.css">
+</head>
+<body class="signup">
+<section class="page-hero">
+    <h1>Shipping and Billing Information</h1>
+    <a href="../" class="page-hero-home-link">Forms Home</a>
+</section>
+<section class="page-content">
+    <div class="form-container clearfix">
+        <h1>Create a Hunting Outfitter Account</h1>
+        <form id="signup-form">
+            <div class="form-row">
+                <div class="field-group">
+                    <label for="first-name">First Name</label>
+                    <input id="first-name" type="text" name="first-name" placeholder="First Name">
+                    <span class="validation-message"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field-group">
+                    <label for="last-name">Last Name</label>
+                    <input id="last-name" type="text" name="last-name" placeholder="Last Name" >
+                    <span class="validation-message"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" name="email" placeholder="Email Address" >
+                    <span class="validation-message"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field-group">
+                    <label for="outfitter-name">Outfitter Name</label>
+                    <input id="outfitter-name" type="text" name="outfitter-name" placeholder="Name of Outfitter"
+                           >
+                    <span class="validation-message"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field-group">
+                    <div class="field-group">
+                        <label for="date-of-birth">Date of Birth</label>
+                        <input type="date" id="date-of-birth" name="date-of-birth" >
+                        <span class="validation-message"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field-group">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password" placeholder="Password" >
+                    <span class="validation-message"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field-group">
+                    <label for="password-confirm">Confirm Password</label>
+                    <input id="password-confirm" type="password" name="password-confirm" placeholder="Confirm Password"
+                           >
+                    <span class="validation-message"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field-group">
+                    <input type="submit" value="Create Account">
+                </div>
+            </div>
+        </form>
+    </div><!-- .form-container -->
+</section><!-- .page-content -->
+<script src="../js/helpers.js"></script>
+<script src="../js/validator.js"></script>
+<script src="js/signup.js"></script>
+<script src="../../../assets/js/bundle.js"></script>
+</body>
+</html>
