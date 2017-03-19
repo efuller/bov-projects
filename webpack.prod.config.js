@@ -22,9 +22,9 @@ const config = {
 	],
 	// The output location for our compiled bundle.
 	output: {
-		filename: path.resolve(__dirname, 'assets/js/bundle.js' ),
+		filename: path.resolve(__dirname, 'build/assets/js/bundle.js' ),
 		path: path.resolve(__dirname, '/'),
-		publicPath: '/'
+		publicPath: '/md-projects/'
 	},
 	resolve: {
 		extensions: ['.js', '.scss']
@@ -56,7 +56,7 @@ const config = {
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoEmitOnErrorsPlugin(),
 		new webpack.NamedModulesPlugin(),
-		new ExtractTextPlugin( path.resolve(__dirname, 'assets/css/style.css' ) ),
+		new ExtractTextPlugin( path.resolve(__dirname, 'build/assets/css/style.css' ) ),
 		// Configure autoprefixer.
 		new webpack.LoaderOptionsPlugin({
 			options: {
