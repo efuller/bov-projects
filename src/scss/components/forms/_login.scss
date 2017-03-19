@@ -1,0 +1,35 @@
+.login {
+	.page-hero {
+		background-color: #303F9F;
+	}
+
+	/* Check box */
+	input[type="checkbox"]:not(:checked) + label:before,
+	input[type="checkbox"]:not(:checked) + label:after,
+	input[type="checkbox"]:checked + label:before,
+	input[type="checkbox"]:checked + label:after {
+		border-color: #303F9F;
+	}
+
+	input[type="checkbox"]:checked + label:after {
+		background-color: #303F9F;
+	}
+
+	/* Submit button */
+	input[type="submit"] {
+		background-color: #303F9F;
+		color: #ffffff;
+	}
+
+	input[type="submit"]:hover,
+	input[type="submit"]:focus {
+		background-color: #303F9F;
+	}
+
+	.validation-message {
+		background-color: #303F9F;
+		color: #FFFFFF;
+		display: none;
+		padding: 0 10px;
+	}
+}

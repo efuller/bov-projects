@@ -1,0 +1,100 @@
+.profile-card {
+	h1 {
+		color: #fff;
+		font-size: 24px;
+		font-weight: 700;
+		letter-spacing: 1px;
+		margin: 0;
+	}
+
+	h1 span {
+		display: block;
+		font-size: 16px;
+		font-weight: 300;
+		margin-top: 15px;
+		position: relative;
+	}
+
+	h1 span:before {
+		background-color: #ffffff;
+		content: "";
+		height: 1px;
+		left: 50%;
+		position: absolute;
+		top: -9px;
+		transform: translateX(-50%);
+		width: 25%;
+	}
+
+	/* Container */
+	.container {
+		display: flex;
+		justify-content: center;
+	}
+
+	/* Default hero styles */
+	.page-hero {
+		background-color: #FF5722;
+	}
+
+	/* Card */
+	.card {
+		border-radius: 2px;
+		box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+		max-width: 300px;
+		margin-bottom: 75px;
+		margin-top: 75px;
+		position: relative;
+		width: 100%;
+	}
+
+	.card-header {
+		background-color: #303F9F;
+		position: relative;
+		text-align: center;
+	}
+
+	.card-header img {
+		border-radius: 50%;
+		border: 5px solid #FF5722;
+		margin: 0 auto;
+		max-width: 150px;
+		vertical-align: middle;
+		width: 100%;
+	}
+
+	.card-content,
+	.card-footer {
+		padding: 20px;
+	}
+
+
+	.card-footer {
+		border-top: 1px solid #b6b6b6;
+		text-align: right;
+	}
+
+	.card-footer a {
+		color: #FF5722;
+		text-decoration: none;
+		text-transform: uppercase;
+		transition: color 0.3s ease;
+	}
+
+	.card-footer a:hover,
+	.card-footer a:visited {
+		color: #FF8A65;
+	}
+
+	.image-container {
+		padding: 40px;
+	}
+
+	.title {
+		background: #FF5722;
+		box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+		margin-left: -10px;
+		padding: 20px;
+		width: calc(100% + 20px);
+	}
+}

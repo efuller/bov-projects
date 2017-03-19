@@ -1,0 +1,49 @@
+//--------------------------------------------------------------
+// FORMS PROJECT PAGE
+//--------------------------------------------------------------
+.example-link {
+	align-items: center;
+	border: 2px solid #b6b6b6;
+	color: #b6b6b6;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 25px;
+	padding: 25px 30px;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.example-link:hover {
+	background-color: #b6b6b6;
+	color: #455A64;
+}
+
+.example-link:hover .indicator {
+	animation: spin-icon 0.3s linear;
+}
+
+.indicator {
+	line-height: 1;
+}
+
+.icon-circle-right {
+	fill: #b6b6b6;
+	height:25px;
+	transition: fill 0.3s ease;
+	width: 25px;
+}
+
+.example-link:hover .icon-circle-right {
+	fill: #455A64;
+}
+
+@keyframes spin-icon {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}

@@ -1,0 +1,65 @@
+.shipping-billing {
+	.form-container {
+		max-width: 640px;
+	}
+
+	.page-hero {
+		background-color: #F57C00;
+	}
+
+	.page-hero h1 {
+		color: #ffffff;
+	}
+
+	.page-hero h1:before {
+		background-color: #ffffff;
+	}
+
+	.page-hero-home-link {
+		color: #ffffff;
+	}
+
+	.zip {
+		margin-right: 0;
+		width: 19%;
+	}
+
+	.billing-info {
+		border-width: 0;
+		margin-bottom: 15px;
+		padding: 0;
+	}
+
+	.billing-info legend {
+		font-size: 36px;
+		padding-bottom: 20px;
+		padding-left: 0;
+	}
+
+	.field-group.same-info {
+		padding: 20px 0;
+	}
+
+	.shipping-info {
+		border-width: 0;
+		padding: 0;
+	}
+
+	.shipping-info legend {
+		font-size: 36px;
+		padding-bottom: 20px;
+		padding-left: 0;
+	}
+
+	input[type="submit"] {
+		background-color: #F57C00;
+		color: #ffffff;
+	}
+
+	.validation-message {
+		display: none;
+		background-color: #F57C00;
+		color: #FFFFFF;
+		padding: 0 10px;
+	}
+}

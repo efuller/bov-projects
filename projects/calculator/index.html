@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="calculator-page">
+<section class="page-hero">
+    <h1>Calculator</h1>
+    <a href="../../" class="page-hero-home-link">Projects Home</a>
+</section>
+<section class="page-content">
+<div id="calculator" class="calculator">
+<div class="gradient"></div>
+    <div class="screen-container">
+        <div id="screen" class="screen"></div>
+    </div>
+    <div class="button-container">
+        <div class="row first">
+            <button data-action="clear" class="key clear">c</button>
+            <button data-action="del" class="key del">d</button>
+            <button data-action="multiply" class="key multiply">*</button>
+        </div>
+        <div class="row">
+            <button data-action="7" class="key seven">7</button>
+            <button data-action="8" class="key eight">8</button>
+            <button data-action="9" class="key nine">9</button>
+            <button data-action="subtract" class="key subtract">-</button>
+        </div>
+        <div class="row">
+            <button data-action="4" class="key four">4</button>
+            <button data-action="5" class="key five">5</button>
+            <button data-action="6" class="key six">6</button>
+            <button data-action="addition" class="key addition">+</button>
+        </div>
+        <div class="row">
+            <button data-action="1" class="key one">1</button>
+            <button data-action="2" class="key two">2</button>
+            <button data-action="3" class="key three">3</button>
+            <button data-action="equal" class="key equal">=</button>
+        </div>
+        <div class="row last">
+            <button data-action="0" class="key zero">0</button>
+            <button data-action="." class="key decimal">.</button>
+        </div>
+    </div>
+</div>
+</section>
+<script src="js/calculator.js"></script>
+<script src="../../bundle.js"></script>
+</body>
+</html>
