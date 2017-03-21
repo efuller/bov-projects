@@ -41,13 +41,16 @@ const config = {
 				test: /\.scss$/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
-					//resolve-url-loader may be chained before sass-loader if necessary
+					publicPath: '/md-projects/assets/css/',
 					use: ['css-loader', 'postcss-loader', 'sass-loader']
 				})
 			},
 			{
 				test: /\.(png|jpg|svg)$/,
-				loader: 'url-loader',
+				loader: 'file-loader',
+				query: {
+					publicPath: '/md-projects/'
+				}
 			}
 		]
 	},
