@@ -1,16 +1,14 @@
 .calculator-page {
+
 	.page-hero {
-		background-color: #616161;
+		background-color: $gray-2;
 	}
 
-	/* Calculator */
 	.calculator {
-		background: #D7DCDF;
+		background: $gray-3;
 		border-bottom-left-radius: 5%;
 		border-bottom-right-radius: 5%;
-		-webkit-box-shadow: 6px 3px 16px rgba(0,0,0, 0.2);
-		-moz-box-shadow: 6px 3px 16px rgba(0,0,0, 0.2);
-		box-shadow: 6px 3px 16px rgba(0,0,0, 0.2);
+		box-shadow: 6px 3px 16px rgba($black, 0.2);
 		height: 512px;
 		margin: 0 auto;
 		max-width: 400px;
@@ -20,14 +18,7 @@
 	}
 
 	.gradient {
-		background: rgba(138,142,147,0.88);
-		background: -moz-linear-gradient(top, rgba(138,142,147,0.88) 3%, rgba(255,255,255,0.3) 23%, rgba(255,255,255,0.85) 39%, rgba(255,255,255, 0.67) 47.1%, rgba(238,241,246,0) 70.8%);
-		background: -webkit-gradient(left top, left bottom, color-stop(3%, rgba(138,142,147,0.88)), color-stop(23%, rgba(255,255,255,0.3)), color-stop(39%, rgba(255,255,255,0.85)), color-stop(47.1%, rgba(238,241,246,0.97)), color-stop(70.8%, rgba(238,241,246,0)));
-		background: -webkit-linear-gradient(top, rgba(138,142,147,0.88) 3%, rgba(255,255,255,0.3) 23%, rgba(255,255,255,0.85) 39%, rgba(255,255,255, 0.67) 47.1%, rgba(238,241,246,0) 70.8%);
-		background: -o-linear-gradient(top, rgba(138,142,147,0.88) 3%, rgba(255,255,255,0.3) 23%, rgba(255,255,255,0.85) 39%, rgba(255,255,255, 0.67) 47.1%, rgba(238,241,246,0) 70.8%);
-		background: -ms-linear-gradient(top, rgba(138,142,147,0.88) 3%, rgba(255,255,255,0.3) 23%, rgba(255,255,255,0.85) 39%, rgba(255,255,255, 0.67) 47.1%, rgba(238,241,246,0) 70.8%);
-		background: linear-gradient(to bottom, rgba(138,142,147,0.88) 3%, rgba(255,255,255,0.3) 23%, rgba(255,255,255,0.85) 39%, rgba(255,255,255, 0.67) 47.1%, rgba(238,241,246,0) 70.8%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a8e93', endColorstr='#eef1f6', GradientType=0 );
+		background: $gray-2;
 		height: 100px;
 	}
 
@@ -37,12 +28,10 @@
 
 	.screen {
 		align-items: center;
-		background-color: rgba(255,255,255, 0.8);
-		border: 1px solid #cccccc;
-		-moz-box-shadow: inset 10px 10px 3px -6px rgba(138,141,146, 0.6);
-		-webkit-box-shadow: inset 10px 10px 3px -6px rgba(138,141,146, 0.6);
-		box-shadow: inset 10px 10px 3px -6px rgba(138,141,146, 0.6);
-		color: rgba(138,141,146,0.6);
+		background-color: rgba($white, 0.8);
+		border: 1px solid $gray-4;
+		box-shadow: inset 10px 10px 3px -6px rgba($gray-2, 0.6);
+		color: rgba($gray-2, 0.6);
 		display: flex;
 		font-family: sans-serif;
 		font-size: 34px;
@@ -75,8 +64,8 @@
 	.key {
 		align-items: center;
 		border-radius: 5px;
-		box-shadow: 0 0 0 2px rgba(0,0,0, 0.50);
-		color: rgba(0,0,0,0.6);;
+		box-shadow: 0 0 0 2px rgba($black, 0.5);
+		color: rgba($black, 0.6);;
 		height: 50px;
 		justify-content: space-around;
 		margin-right: 10px;

@@ -13,12 +13,12 @@
 	input[type="radio"]:not(:checked) + label:after,
 	input[type="radio"]:checked + label:before,
 	input[type="radio"]:checked + label:after {
-		border: 2px solid #34495e;
+		border: 2px solid $blue-2;
 	}
 
 	input[type="radio"]:checked + label:after {
-		background: #34495e;
-		border-color: #34495e;
+		background: $blue-2;
+		border-color: $blue-2;
 	}
 
 	input[type="text"].other {
@@ -45,14 +45,14 @@
 
 	/* Submit button */
 	input[type="submit"] {
-		background-color: #34495e;
-		color: #ffffff;
+		background-color: $blue-2;
+		color: $white;
 		letter-spacing: 1px;
 	}
 
 	input[type="submit"]:hover,
 	input[type="submit"]:focus {
-		background-color: #34495e;
+		background-color: $blue-2;
 	}
 
 	input:disabled,
@@ -62,8 +62,8 @@
 	}
 
 	.validation-message {
-		background-color: #34495e;
-		color: #FFFFFF;
+		background-color: $blue-2;
+		color: $white;
 		display: none;
 		margin-left: 35px;
 		padding: 0 10px;

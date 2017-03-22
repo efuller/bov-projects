@@ -1,6 +1,6 @@
 .login {
 	.page-hero {
-		background-color: #303F9F;
+		background-color: $blue;
 	}
 
 	/* Check box */
@@ -8,27 +8,27 @@
 	input[type="checkbox"]:not(:checked) + label:after,
 	input[type="checkbox"]:checked + label:before,
 	input[type="checkbox"]:checked + label:after {
-		border-color: #303F9F;
+		border-color: $blue;
 	}
 
 	input[type="checkbox"]:checked + label:after {
-		background-color: #303F9F;
+		background-color: $blue;
 	}
 
 	/* Submit button */
 	input[type="submit"] {
-		background-color: #303F9F;
-		color: #ffffff;
+		background-color: $blue;
+		color: $white;
 	}
 
 	input[type="submit"]:hover,
 	input[type="submit"]:focus {
-		background-color: #303F9F;
+		background-color: $blue;
 	}
 
 	.validation-message {
-		background-color: #303F9F;
-		color: #FFFFFF;
+		background-color: $blue;
+		color: $white;
 		display: none;
 		padding: 0 10px;
 	}

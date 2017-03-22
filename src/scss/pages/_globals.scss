@@ -1,13 +1,17 @@
-/* Basic Resets */
-*, *:before, *:after {
+//--------------------------------------------------------------
+// Base Resets
+//--------------------------------------------------------------
+*,
+*::before,
+*::after {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
 body {
-	background-color:  #f2f2f2;
-	color: #525252;
+	background-color:  $gray-1;
+	color: $gray-2;
 	font-family: "Roboto", sans-serif;
 	height: 100%;
 	line-height: 1.6;
@@ -17,24 +21,23 @@ body {
 	vertical-align: baseline;
 }
 
-.clearfix:before,
-.clearfix:after {
-	content: " "; /* 1 */
-	display: table; /* 2 */
+.clearfix::before,
+.clearfix::after {
+	content: " ";
+	display: table;
 }
 
-.clearfix:after {
+.clearfix::after {
 	clear: both;
 }
 
-/* Page globals */
-
-
-/* Page Content */
+//--------------------------------------------------------------
+// PAGE CONTENT
+//--------------------------------------------------------------
 .page-content {
-	max-width: 960px;
 	margin: 0 auto;
-	padding: 50px 25px;
+	max-width: 960px;
+	padding: 50px 20px;
 	width: 100%;
 }
 
@@ -51,25 +54,33 @@ body {
 	width: 100%;
 }
 
-/* Default form container styles */
+//--------------------------------------------------------------
+// Form Container
+//--------------------------------------------------------------
 .form-container {
 	border-radius: 2px;
-	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
-	max-width: 630px;
-	margin: 50px auto;
-	padding: 32px 32px 45px;
+	box-shadow: 0 2px 5px 0 rgba($black, 0.16), 0 2px 10px 0 rgba($black, 0.12);
+	margin: 25px auto;
+	padding: 32px 20px 45px;
 	width: 100%;
+
+	@media screen and (min-width: $tablet) {
+		margin: 50px auto;
+		max-width: 630px;
+	}
 }
 
 .body-content-header {
-	background-color: #303F9F;
-	color: #ffffff;
+	background-color: $blue;
+	color: $white;
 	height: 90px;
 }
 
-/* Body Content */
+//--------------------------------------------------------------
+// Body Content
+//--------------------------------------------------------------
 .content {
-	background: #ffffff;
+	background: $white;
 	min-height: 100vh;
 	width: 100%;
 }
@@ -89,18 +100,17 @@ body {
 }
 
 .body-content-header h3 {
-	color: #C5CAE9;
+	color: $purple-light;
 	font-weight: 300;
 }
 
 //--------------------------------------------------------------
 // PAGE GLOBALS
 //--------------------------------------------------------------
-/* Default hero styles */
 .page-hero {
 	align-items: center;
-	background-color: #34495e;
-	border-bottom: 1px solid #ffffff;
+	background-color: $blue-2;
+	border-bottom: 1px solid $white;
 	display: flex;
 	flex-direction: column;
 	height: 250px;
@@ -108,20 +118,27 @@ body {
 	text-align: center;
 }
 
-/* Hero h1 */
 .page-hero h1,
 .page-hero-content h1 {
-	color: #ecf0f1;
-	font-size: 48px;
+	color: $gray-3;
+	font-size: 36px;
 	margin-bottom: 30px;
 	margin-top: 0;
 	position: relative;
+
+	@media screen and (min-width: $tablet) {
+		font-size: 40px;
+	}
+
+	@media screen and (min-width: $desktop) {
+		font-size: 48px;
+	}
 }
 
-.page-hero h1:before {
-	background-color: #ecf0f1;
+.page-hero h1::before {
+	background-color: $gray-3;
 	bottom: -10px;
-	content: '';
+	content: "";
 	display: block;
 	height: 1px;
 	left: 15%;
@@ -130,16 +147,16 @@ body {
 }
 
 .page-hero h3 {
-	color: #ffffff;
+	color: $white;
 	font-weight: 300;
 	margin-top: 5px;
 }
 
-/* Hero link */
+// Hero link.
 .page-hero-home-link {
-	color: #ecf0f1;
-	font-size: 24px;
+	color: $gray-3;
 	display: block;
+	font-size: 24px;
 	padding-left: 30px;
 	position: relative;
 	text-decoration: none;

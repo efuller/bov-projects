@@ -4,14 +4,14 @@
 	}
 
 	input[type="submit"] {
-		color: #ffffff;
+		color: $white;
 		background-color: #00796B;
 	}
 
 	/* Validation */
 	.validation-message {
 		background-color: #00796B;
-		color: #FFFFFF;
+		color: $white;
 		display: none;
 		padding: 0 10px;
 	}

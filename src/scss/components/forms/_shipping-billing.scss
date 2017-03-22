@@ -8,15 +8,15 @@
 	}
 
 	.page-hero h1 {
-		color: #ffffff;
+		color: $white;
 	}
 
 	.page-hero h1:before {
-		background-color: #ffffff;
+		background-color: $white;
 	}
 
 	.page-hero-home-link {
-		color: #ffffff;
+		color: $white;
 	}
 
 	.zip {
@@ -53,13 +53,13 @@
 
 	input[type="submit"] {
 		background-color: #F57C00;
-		color: #ffffff;
+		color: $white;
 	}
 
 	.validation-message {
 		display: none;
 		background-color: #F57C00;
-		color: #FFFFFF;
+		color: $white;
 		padding: 0 10px;
 	}
 }

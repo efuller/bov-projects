@@ -9,14 +9,14 @@
 
 	input[type="submit"] {
 		background-color: #512DA8;
-		color: #ffffff;
+		color: $white;
 	}
 
 	.validation-message,
 	#card-expired {
 		display: none;
 		background-color: #512DA8;
-		color: #ffffff;
+		color: $white;
 		padding: 0 10px;
 	}
 
