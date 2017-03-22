@@ -1,0 +1,50 @@
+$tabs-color-yellow: #daa520;
+
+.tabs {
+	font-family: "Open Sans", sans-serif;
+	margin: 50px auto;
+	max-width: 600px;
+
+	input[type="radio"] + label::before,
+	input[type="radio"] + label::after {
+		display: none;
+	}
+
+	input[type="radio"]:checked + label,
+	input[type="radio"]:not(:checked) + label {
+		height: auto;
+		width: auto;
+	}
+}
+
+.tabs__link,
+.tabs__content {
+	display: none;
+}
+
+label {
+	border: 1px solid $gray-4;
+	cursor: pointer;
+	float: left;
+	margin: 0 0 -1px -1px;
+	padding: 10px 30px;
+}
+
+.tabs__link:checked + label {
+	background: $tabs-color-yellow;
+	border-color: $tabs-color-yellow;
+	color: $white;
+}
+
+.tabs__content {
+	border: 1px solid $gray-4;
+	clear: both;
+	padding: 15px;
+}
+
+#tab__one:checked ~ #tab__content--one,
+#tab__two:checked ~ #tab__content--two,
+#tab__three:checked ~ #tab__content--three,
+#tab__four:checked ~ #tab__content--four {
+	display: block;
+}
