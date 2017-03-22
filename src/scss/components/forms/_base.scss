@@ -20,12 +20,12 @@ label {
 }
 
 fieldset {
-	border: 2px solid #e0e0e0;
+	border: 2px solid $gray-4;
 	padding: 24px;
 }
 
 select {
-	border: 2px solid #e0e0e0;
+	border: 2px solid $gray-4;
 	border-radius: 2px;
 	display: block;
 	font-size: 18px;
@@ -37,19 +37,19 @@ select {
 }
 
 select:focus {
-	border: 2px solid #c9c9c9;
+	border: 2px solid $gray-4;
 	outline: none;
 }
 
 textarea {
-	border: 2px solid #e0e0e0;
+	border: 2px solid $gray-4;
 	display: block;
 	font-size: 18px;
 	padding: 15px;
 	width: 100%;
 }
 
-/* Inputs */
+// Inputs.
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -57,7 +57,7 @@ input[type="date"],
 input[type="time"],
 input[type="tel"],
 input[type="number"] {
-	border: 2px solid #e0e0e0;
+	border: 2px solid $gray-4;
 	border-radius: 2px;
 	display: inline-block;
 	font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
@@ -69,7 +69,7 @@ input[type="number"] {
 	width: 100%;
 }
 
-/* Inputs with focus */
+// Inputs with focus.
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
@@ -77,11 +77,11 @@ input[type="date"]:focus,
 input[type="time"]:focus,
 input[type="tel"]:focus,
 textarea:focus {
-	border: 2px solid #c9c9c9;
+	border: 2px solid $gray-4;
 	outline: none;
 }
 
-/* Full-width Buttons */
+// Full-width Buttons.
 input[type="submit"].full-width,
 input[type="reset"].full-width,
 input[type="button"].full-width,
@@ -89,13 +89,13 @@ button.full-width {
 	width: 100%;
 }
 
-/* Radio / Checkbox */
+// Radio / Checkbox.
 input[type="radio"],
 input[type="checkbox"] {
 	display: none;
 }
 
-/* Radio / Checkbox labels */
+// Radio / Checkbox labels.
 input[type="radio"]:checked + label,
 input[type="radio"]:not(:checked) + label,
 input[type="checkbox"]:not(:checked) + label,
@@ -107,45 +107,45 @@ input[type="checkbox"]:checked + label {
 	position: relative;
 }
 
-input[type="radio"] + label:before,
-input[type="radio"] + label:after,
-input[type="checkbox"] + label:before,
-input[type="checkbox"] + label:after {
-	content: '';
+input[type="radio"] + label::before,
+input[type="radio"] + label::after,
+input[type="checkbox"] + label::before,
+input[type="checkbox"] + label::after {
+	content: "";
 	cursor: pointer;
-	position: absolute;
-	left: 0;
-	top: 0;
-	margin: 4px;
-	width: 16px;
 	height: 16px;
-	z-index: 0;
+	left: 0;
+	margin: 4px;
+	position: absolute;
+	top: 0;
 	transition: 0.3s ease;
+	width: 16px;
+	z-index: 0;
 }
 
-input[type="radio"]:not(:checked) + label:before,
-input[type="radio"]:not(:checked) + label:after,
-input[type="radio"]:checked + label:before,
-input[type="radio"]:checked + label:after,
-input[type="checkbox"]:not(:checked) + label:before,
-input[type="checkbox"]:not(:checked) + label:after,
-input[type="checkbox"]:checked + label:before,
-input[type="checkbox"]:checked + label:after {
-	border: 2px solid #e0e0e0;
+input[type="radio"]:not(:checked) + label::before,
+input[type="radio"]:not(:checked) + label::after,
+input[type="radio"]:checked + label::before,
+input[type="radio"]:checked + label::after,
+input[type="checkbox"]:not(:checked) + label::before,
+input[type="checkbox"]:not(:checked) + label::after,
+input[type="checkbox"]:checked + label::before,
+input[type="checkbox"]:checked + label::after {
+	border: 2px solid $gray-4;
 	border-radius: 50%;
 }
 
-input[type="checkbox"]:not(:checked) + label:before,
-input[type="checkbox"]:not(:checked) + label:after,
-input[type="checkbox"]:checked + label:before,
-input[type="checkbox"]:checked + label:after {
+input[type="checkbox"]:not(:checked) + label::before,
+input[type="checkbox"]:not(:checked) + label::after,
+input[type="checkbox"]:checked + label::before,
+input[type="checkbox"]:checked + label::after {
 	border-radius: 0;
 }
 
-input[type="radio"]:checked + label:after,
-input[type="checkbox"]:checked + label:after {
-	background: #c9c9c9;
-	border-color: #c9c9c9;
+input[type="radio"]:checked + label::after,
+input[type="checkbox"]:checked + label::after {
+	background: $gray-4;
+	border-color: $gray-4;
 }
 
 input[type="range"] {
@@ -153,28 +153,28 @@ input[type="range"] {
 	width: 100%;
 }
 
-/* Placeholders */
+// Placeholders.
 input::-webkit-input-placeholder {
-	opacity: .6;
+	opacity: 0.6;
 }
 
 input:-moz-placeholder {
-	opacity: .6;
+	opacity: 0.6;
 }
 
 input::-moz-placeholder {
-	opacity: .6;
+	opacity: 0.6;
 }
 
 input:-ms-input-placeholder {
-	opacity: .6;
+	opacity: 0.6;
 }
 
 .clear {
 	clear: both;
 }
 
-/* Style a tag as button */
+// Style a tag as button.
 a.button {
 	display: inline;
 	line-height: 1;
@@ -182,7 +182,7 @@ a.button {
 	text-decoration: none;
 }
 
-/* Utility classes */
+// Utility classes.
 .button-right {
 	margin-left: 16px;
 }
@@ -195,10 +195,10 @@ a.button {
 	margin-bottom: 24px;
 }
 
-.form-row:after {
-	content: '';
-	display: table;
+.form-row::after {
 	clear: both;
+	content: "";
+	display: table;
 }
 
 .form-row:last-of-type {
@@ -209,7 +209,7 @@ a.button {
 	margin-bottom: 0;
 }
 
-/* Two column forms! */
+// Two column forms!
 .form-row.two-column {
 	float: left;
 	margin-right: 2%;
@@ -243,8 +243,8 @@ a.button {
 
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
-	position: absolute !important;
 	height: 1px;
-	width: 1px;
 	overflow: hidden;
+	position: absolute;
+	width: 1px;
 }
