@@ -1,3 +1,7 @@
+//--------------------------------------------------------------
+// IMAGE GALLERY
+//--------------------------------------------------------------
+
 .gallery {
 
 	img {
@@ -17,78 +21,77 @@
 		padding: 0;
 		width: 150px;
 	}
-}
+
+	.gallery-container {
+		margin: 50px auto;
+		max-width: 1000px;
+		padding: 20px;
+		width: 100%;
+	}
+
+	.gallery__container {
+		height: 608px;
+		position: relative;
+		width: 915px;
+	}
+
+	.gallery__list {
+		display: flex;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.gallery__label {
+		border: 5px solid $blue-2;
+		cursor: pointer;
+		display: block;
+		height: 100px;
+		position: relative;
+		width: 150px;
+		z-index: 10;
+	}
+
+	.gallery__label img {
+		min-height: 90px;
+	}
+
+	.gallery__label::before {
+		background-color: rgba($black, 0.5);
+		content: "";
+		display: block;
+		height: 93px;
+		left: 0;
+		position: absolute;
+		top: 0;
+		transition: background 0.5s;
+		width: 100%;
+	}
+
+	.gallery__image {
+		left: 0;
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		transition: opacity 0.5s;
+	}
 
 
-.gallery-container {
-	margin: 50px auto;
-	max-width: 1000px;
-	padding: 20px;
-	width: 100%;
-}
+	.gallery__image img {
+		height: auto;
+		min-height: 608px;
+		width: 100%;
+	}
 
-.gallery__container {
-	height: 608px;
-	position: relative;
-	width: 915px;
-}
+	input[name="gallery"] {
+		display: none;
+	}
 
-.gallery__list {
-	display: flex;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
+	input[name="gallery"]:checked ~ .gallery__label::before {
+		background-color: transparent;
+	}
 
-.gallery__label {
-	border: 5px solid #263238;
-	cursor: pointer;
-	display: block;
-	height: 100px;
-	position: relative;
-	width: 150px;
-	z-index: 10;
-}
-
-.gallery__label img {
-	min-height: 90px;
-}
-
-.gallery__label::before {
-	background-color: rgba($black, 0.5);
-	content: "";
-	display: block;
-	height: 93px;
-	left: 0;
-	position: absolute;
-	top: 0;
-	transition: background 0.5s;
-	width: 100%;
-}
-
-.gallery__image {
-	left: 0;
-	opacity: 0;
-	position: absolute;
-	top: 0;
-	transition: opacity 0.5s;
-}
-
-
-.gallery__image img {
-	height: auto;
-	min-height: 608px;
-	width: 100%;
-}
-
-input[name="gallery"] {
-	display: none;
-}
-
-input[name="gallery"]:checked ~ .gallery__label::before {
-	background-color: transparent;
-}
-
-input[name="gallery"]:checked ~ .gallery__image {
-	opacity: 1;
+	input[name="gallery"]:checked ~ .gallery__image {
+		opacity: 1;
+	}
 }

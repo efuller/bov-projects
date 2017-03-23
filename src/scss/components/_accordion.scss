@@ -24,52 +24,47 @@ $color-accordion-secondary: #bf2942 !default;
 	input[type="checkbox"]:checked + label {
 		height: auto;
 	}
-}
 
-.accordion__list,
-.menu {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
+	label {
+		background-color: $color-accordion-primary;
+		display: block;
+		padding: 15px;
+		text-transform: uppercase;
+	}
 
-.accordion h3 {
-	margin: 0;
-}
+	.accordion .accordion__pane {
+		padding: 15px;
+	}
 
-.accordion__list li {
-	margin-bottom: 2px;
-}
+	.accordion__list,
+	.menu {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
 
-.accordion__trigger,
-.accordion__pane {
-	display: none;
-}
+	.accordion__list li {
+		margin-bottom: 2px;
+	}
 
-.accordion label {
-	background-color: $color-accordion-primary;
-	display: block;
-	text-transform: uppercase;
-}
+	.accordion__trigger,
+	.accordion__pane {
+		display: none;
+	}
 
-.accordion label,
-.accordion .accordion__pane {
-	border: 1px solid $black;
-	padding: 15px;
-}
+	.accordion .accordion__pane {
+		border-top: none;
+	}
 
-.accordion .accordion__pane {
-	border-top: none;
-}
+	.accordion__trigger:checked + label {
+		background-color: $color-accordion-secondary;
+		color: $white;
+	}
 
-.accordion__trigger:checked + label {
-	background-color: $color-accordion-secondary;
-	color: $white;
-}
-
-#trigger--one:checked ~ .accordion__pane,
-#trigger--two:checked ~ .accordion__pane,
-#trigger--three:checked ~ .accordion__pane,
-#trigger--four:checked ~ .accordion__pane {
-	display: block;
+	#trigger--one:checked ~ .accordion__pane,
+	#trigger--two:checked ~ .accordion__pane,
+	#trigger--three:checked ~ .accordion__pane,
+	#trigger--four:checked ~ .accordion__pane {
+		display: block;
+	}
 }
