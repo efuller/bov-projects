@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body class="color-builder">
+<section class="page-hero">
+    <h1>Color Builder</h1>
+    <a href="../" class="page-hero-home-link">Forms Home</a>
+</section>
+<div class="form-container">
+    <form>
+        <div class="form-row">
+            <div class="field-group">
+                <label for="red">Red</label>
+                <input id="red" type="range" name="red" min="0" max="255" step="5">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="field-group">
+                <label for="green">Green</label>
+                <input id="green" type="range" name="green" min="0" max="255" step="5">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="field-group">
+                <label for="blue">Blue</label>
+                <input id="blue" type="range" name="blue" min="0" max="255" step="5">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="field-group">
+                <label for="alpha">Alpha (adjust opacity)</label>
+                <input id="alpha" type="range" name="alpha" min="0" max="1" step="0.01">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="field-group">
+                <label for="results">Results</label>
+                <textarea name="results" id="results" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="../../../js/bundle.js"></script>
+</body>
+</html>

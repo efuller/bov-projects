@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body class="login">
+<section class="page-hero">
+    <h1>Login</h1>
+    <a href="../" class="page-hero-home-link">Forms Home</a>
+</section>
+<div class="form-container">
+    <form id="login">
+        <div class="form-row">
+            <div class="field-group">
+                <label for="username">Username:</label>
+                <input id="username" type="text" name="username" placeholder="Username">
+                <span class="validation-message"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="field-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" placeholder="Password">
+                <span class="validation-message"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="field-group">
+                <input id="remember" type="checkbox" name="remember">
+                <label for="remember">Stay logged in.</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="field-group">
+                <input type="submit" value="Submit">
+            </div>
+        </div>
+    </form>
+</div><!-- .form-container -->
+<script src="../js/validator.js"></script>
+<script src="../js/helpers.js"></script>
+<script src="js/login.js"></script>
+<script src="../../../js/bundle.js"></script>
+</body>
+</html>
