@@ -10,6 +10,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 /**
@@ -18,13 +19,14 @@ const autoprefixer = require('autoprefixer');
 const config = {
 	// The entry point of our app. Where our dependency graph starts.
 	entry: [
+		path.resolve(__dirname, 'src/scss/index.scss' ),
 		path.resolve(__dirname, 'src/index.js')
 	],
 	// The output location for our compiled bundle.
 	output: {
-		filename: path.resolve(__dirname, 'build/assets/js/bundle.js' ),
-		path: path.resolve(__dirname, '/'),
-		publicPath: '/md-projects/'
+		filename: 'js/bundle.js',
+		path: path.resolve(__dirname, './build'),
+		publicPath: '/'
 	},
 	resolve: {
 		extensions: ['.js', '.scss']
@@ -41,15 +43,17 @@ const config = {
 				test: /\.scss$/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
-					publicPath: '/md-projects/assets/css/',
+					//publicPath: '/md-projects/assets/css/',
 					use: ['css-loader', 'postcss-loader', 'sass-loader']
 				})
 			},
 			{
 				test: /\.(png|jpg|svg)$/,
 				loader: 'file-loader',
-				query: {
+				options: {
+					name: 'images/[name].[ext]',
 					publicPath: '/md-projects/'
+
 				}
 			}
 		]
@@ -59,7 +63,7 @@ const config = {
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoEmitOnErrorsPlugin(),
 		new webpack.NamedModulesPlugin(),
-		new ExtractTextPlugin( path.resolve(__dirname, 'build/assets/css/style.css' ) ),
+		new ExtractTextPlugin( './css/style.css' ),
 		// Configure autoprefixer.
 		new webpack.LoaderOptionsPlugin({
 			options: {
@@ -67,6 +71,12 @@ const config = {
 					autoprefixer(),
 				]
 			}
+		}),
+		new CleanWebpackPlugin(['build'], {
+			root: __dirname,
+			verbose: true,
+			dry: false,
+			exclude: ['index.html', 'projects']
 		})
 	],
 };

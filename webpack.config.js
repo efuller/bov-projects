@@ -17,18 +17,20 @@ const autoprefixer = require('autoprefixer');
 const config = {
 	// The entry point of our app. Where our dependency graph starts.
 	entry: [
+		path.resolve(__dirname, 'src/scss/index.scss' ),
 		path.resolve(__dirname, 'src/index.js')
 	],
 	// The output location for our compiled bundle.
 	output: {
 		filename: 'assets/js/bundle.js',
 		path: path.resolve(__dirname, '/'),
-		publicPath: '/'
+		publicPath: 'http://localhost:8080/'
 	},
 	context: path.resolve(__dirname, 'src'),
 	devServer: {
+		contentBase: path.join(__dirname, '/' ),
 		hot: true,
-		publicPath: '/',
+		publicPath: 'http://localhost:8080/',
 		inline: true
 	},
 	resolve: {
@@ -58,7 +60,7 @@ const config = {
 			},
 			{
 				test: /\.(png|jpg|svg)$/,
-				loader: 'url-loader',
+				loader: 'file-loader',
 			}
 		]
 	},
