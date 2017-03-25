@@ -1,5 +1,5 @@
 
-require( './scss/index.scss' );
+//require( './scss/index.scss' );
 
 // https://webpack.github.io/docs/hot-module-replacement.html
 if (module.hot) {
