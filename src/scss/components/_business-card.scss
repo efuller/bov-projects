@@ -3,10 +3,9 @@ $biz-card-color-title: #bbb;
 $biz-card-color-content: #eee;
 
 .biz-card-container {
-	height: 325px;
-	margin: 50px auto;
+	//height: 325px;
+	margin: 0 auto;
 	max-width: 500px;
-	padding: 20px;
 	width: 100%;
 }
 
@@ -24,7 +23,9 @@ $biz-card-color-content: #eee;
 	input[type="checkbox"]:not(:checked) + label,
 	input[type="checkbox"]:checked + label {
 		border: none;
+		height: 50px;
 		position: absolute;
+		width: 50px;
 	}
 
 	a {
@@ -41,9 +42,9 @@ $biz-card-color-content: #eee;
 	.biz-card__front,
 	.biz-card__back {
 		font-size: 14px;
-		height: 325px;
 		left: 0;
 		max-width: 500px;
+		min-height: 325px;
 		position: absolute;
 		top: 0;
 		width: 100%;
@@ -103,7 +104,8 @@ $biz-card-color-content: #eee;
 
 	.biz-card__front {
 		backface-visibility: hidden;
-		background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/178921/bg2.png);
+		background: url("../images/bg2.png") no-repeat;
+		background-size: cover;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -115,7 +117,8 @@ $biz-card-color-content: #eee;
 	.biz-card__back {
 		align-items: flex-end;
 		backface-visibility: hidden;
-		background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/178921/biz-card.png);
+		background: url("../images/biz-card.png") no-repeat;
+		background-size: cover;
 		display: flex;
 		justify-content: flex-end;
 		text-align: right;
@@ -139,7 +142,11 @@ $biz-card-color-content: #eee;
 	.biz-card__email,
 	.biz-card__website {
 		display: inline-block;
-		margin-top: 20px;
+		margin-top: 5px;
+
+		@media screen and (min-width: $tablet) {
+			margin-top: 20px;
+		}
 	}
 
 	.biz-card__email {
@@ -147,9 +154,17 @@ $biz-card-color-content: #eee;
 	}
 
 	.biz-card__bottom {
-		align-items: center;
+		align-items: flex-start;
 		display: flex;
-		justify-content: space-between;
+		flex-flow: column;
+		justify-content: flex-start;
+		margin-top: 20px;
+
+		@media screen and (min-width: $tablet) {
+			align-items: center;
+			flex-flow: row;
+			justify-content: space-between;
+		}
 	}
 
 	.biz-card__left-container {
@@ -159,10 +174,15 @@ $biz-card-color-content: #eee;
 	}
 
 	.biz-card__left-logo {
-		background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/178921/enc2.png);
+		background: url("../images/enc2.png");
 		height: 46px;
+		margin-left: -3px;
 		margin-right: 10px;
 		width: 46px;
+
+		@media screen and (min-width: $tablet) {
+			margin-left: 0;
+		}
 	}
 
 	.biz-card__right-menu {
@@ -170,6 +190,14 @@ $biz-card-color-content: #eee;
 		display: flex;
 		justify-content: space-between;
 		list-style: none;
+		margin-top: 20px;
+		padding: 0;
+
+		@media screen and (min-width: $tablet) {
+			margin-bottom: 0;
+			margin-top: 0;
+			padding-left: 40px;
+		}
 	}
 
 	.biz-card__right-menu li {
@@ -184,11 +212,11 @@ $biz-card-color-content: #eee;
 	}
 
 	.biz-card__twitter {
-		background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/178921/twitter.png);
+		background: url("../images/twitter.png");
 	}
 
 	.biz-card__github {
-		background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/178921/github2.png);
+		background: url("../images/github2.png");
 	}
 
 	.biz-card__back--name {

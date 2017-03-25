@@ -2,13 +2,25 @@
 // ACCORDION
 //--------------------------------------------------------------
 
-$color-accordion-primary: #d95b44 !default;
-$color-accordion-secondary: #bf2942 !default;
+// Pre mobile colors.
+$color-accordion-primary-pre-mobile: #30499b !default;
+$color-accordion-secondary-pre-mobile: #367abd !default;
+
+// Mobile colors.
+$color-accordion-primary-mobile: #56b949 !default;
+$color-accordion-secondary-mobile: #a3d749 !default;
+
+// Tablet colors.
+$color-accordion-primary-tablet: #000 !default;
+$color-accordion-secondary-tablet: #fff !default;
+
+// Desktop colors.
+$color-accordion-primary: #844d9e !default;
+$color-accordion-secondary: #f3a530 !default;
 
 .accordion {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin: 0 auto;
-	max-width: 600px;
 	width: 100%;
 
 	input[type="radio"] + label::before,
@@ -26,13 +38,29 @@ $color-accordion-secondary: #bf2942 !default;
 	}
 
 	label {
-		background-color: $color-accordion-primary;
+		background-color: $color-accordion-secondary-pre-mobile;
+		color: $white;
+		cursor: pointer;
 		display: block;
 		padding: 15px;
 		text-transform: uppercase;
+
+		@media screen and (min-width: $mobile) {
+			background-color: $color-accordion-secondary-mobile;
+		}
+
+		@media screen and (min-width: $tablet) {
+			background-color: $color-accordion-secondary-tablet;
+			color: $black;
+		}
+
+		@media screen and (min-width: $desktop) {
+			background-color: $color-accordion-secondary;
+			color: $white;
+		}
 	}
 
-	.accordion .accordion__pane {
+	.accordion__pane {
 		padding: 15px;
 	}
 
@@ -52,13 +80,26 @@ $color-accordion-secondary: #bf2942 !default;
 		display: none;
 	}
 
-	.accordion .accordion__pane {
+	.accordion__pane {
 		border-top: none;
 	}
 
 	.accordion__trigger:checked + label {
-		background-color: $color-accordion-secondary;
+		background-color: $color-accordion-primary-pre-mobile;
 		color: $white;
+		cursor: default;
+
+		@media screen and (min-width: $mobile) {
+			background-color: $color-accordion-primary-mobile;
+		}
+
+		@media screen and (min-width: $tablet) {
+			background-color: $color-accordion-primary-tablet;
+		}
+
+		@media screen and (min-width: $desktop) {
+			background-color: $color-accordion-primary;
+		}
 	}
 
 	#trigger--one:checked ~ .accordion__pane,
