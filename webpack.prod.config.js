@@ -52,7 +52,7 @@ const config = {
 				loader: 'file-loader',
 				options: {
 					name: 'images/[name].[ext]',
-					publicPath: '/md-projects/'
+					publicPath: '/bov-projects/'
 
 				}
 			}
