@@ -1,0 +1,41 @@
+//--------------------------------------------------------------
+// Flash Messages
+//--------------------------------------------------------------
+.flash {
+	align-items: center;
+	border-radius: 3px;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 20px;
+
+	&--closed {
+		display: none;
+	}
+
+	&--success {
+		background: $color-green-light;
+		border: 1px solid $color-green;
+	}
+
+	&--error {
+		background: $color-red-light;
+		border: 1px solid $color-red;
+	}
+
+	&__close {
+		background: transparent;
+		padding: 3px;
+
+		&:hover {
+			background: transparent;
+		}
+	}
+
+	&--success .flash__close {
+		color: $color-green;
+	}
+
+	&--error .flash__close {
+		color: $color-red;
+	}
+}
