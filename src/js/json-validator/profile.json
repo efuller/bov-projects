@@ -1,0 +1,70 @@
+{
+  "about": {
+    "sectionTitle": "About",
+    "fullName": "Eric Fuller",
+    "bioIntro": "Hi! My name is Eric. Welcome to my page that showcases some of the things I've been working on while enrolled in the BOV Academy.I am a front-end developer with a passion for learning new things. I intend on graduating from BOV Academy as a Fullstack Javscript Developer. When I'm not coding, I enjoy the outdoors, traveling, and eating great food."
+  },
+  "skills": {
+    "sectionTitle": "Skills",
+    "description": "Below is a list of technologies I am comfortable working with."
+  },
+  "technologies": [
+    {
+      "name": "HTML5",
+      "percent": 90
+    },
+    {
+      "name": "CSS",
+      "percent": 90
+    },
+    {
+      "name": "Sass",
+      "percent": 80
+    },
+    {
+      "name": "Javascript",
+      "percent": 70
+    },
+    {
+      "name": "ES6",
+      "percent": 60
+    },
+    {
+      "name": "jQuery",
+      "percent": 70
+    },
+    {
+      "name": "WordPress",
+      "percent": 80
+    },
+    {
+      "name": "PHP",
+      "percent": 70
+    },
+    {
+      "name": "React",
+      "percent": 70
+    },
+    {
+      "name": "Redux",
+      "percent": 70
+    },
+    {
+      "name": "Webpack",
+      "percent": 60
+    },
+    {
+      "name": "Git",
+      "percent": 70
+    }
+  ],
+  "contact": {
+    "sectionTitle": "Contact",
+    "name": "Eric Fuller",
+    "title": "Senior Frontend Developer",
+    "email": "info@glassmoonmedia.com",
+    "website": "http://www.ericfuller.net",
+    "twitter": "http://www.twitter.com/ericpfuller",
+    "github": "http://www.github.com/efuller"
+  }
+}
