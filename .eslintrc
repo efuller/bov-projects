@@ -1,6 +1,11 @@
 {
   "extends": "airbnb/legacy",
   "rules": {
-    "func-names": ["error", "never"]
+    "func-names": ["error", "never"],
+    "indent": [2, "tab"],
+    "no-tabs": 0
+  },
+  "parserOptions": {
+    "sourceType": "module"
   }
 }
