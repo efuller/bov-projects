@@ -105,16 +105,14 @@ export default (function () {
 	}
 
 	function validate(input) {
-		let objectFound = false;
-		let	arrayObjectFound = false;
-		let	arrayFound = false;
-		let i = 1;
+		var objectFound = false;
+		var	arrayObjectFound = false;
+		var	arrayFound = false;
+		var i = 1;
 
 
-		const cleanedInput = prepareJSON(input);
-		const length = cleanedInput.length;
-
-		console.log(cleanedInput);
+		var cleanedInput = prepareJSON(input);
+		var length = cleanedInput.length;
 
 		if (!patterns.beginningPattern.test(cleanedInput[0])) {
 			return newError(false, 'There was an error on line 1.', cleanedInput[0]);
