@@ -1,3 +1,10 @@
+/**
+ * First pass at a simple JSON validator.
+ *
+ * I understand, this code is not of the highest quality because learning.
+ * I plan to refactor this using more functional techniques once I get
+ * better.
+ */
 export default (function () {
 
 	const patterns = {

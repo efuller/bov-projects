@@ -1,5 +1,4 @@
 import JSONValidator from './json-validator';
-//http://blog.teamtreehouse.com/reading-files-using-the-html5-filereader-api
 
 export default (function () {
 	const cacheDOM = {};
@@ -38,12 +37,10 @@ export default (function () {
 		clearMessage();
 		const input = cacheDOM.textArea.value;
 		const result = JSONValidator.validate(input);
-		console.log(result);
 		displayResult(result);
 	}
 
 	function handleFileUpload() {
-		debugger;
 		const fileInput = cacheDOM.fileUpload.files[0];
 
 		if (fileInput.type !== 'application/json') {
