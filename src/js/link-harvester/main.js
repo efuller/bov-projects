@@ -41,8 +41,8 @@ export default (function () {
 	}
 
 	function displayResult(results) {
-		let emailHTML;
-		let linksHTML;
+		var emailHTML = '';
+		var linksHTML = '';
 
 		if (!results.emailAddresses.length && !results.links.length) {
 			abort();
