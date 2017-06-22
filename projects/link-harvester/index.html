@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MD Buttons</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<section class="page-hero">
+    <h1>Link Harvester</h1>
+    <a href="../../" class="page-hero-home-link">Projects Home</a>
+</section>
+<section class="page-content">
+	<div class="harvester">
+		<textarea id="harvester-text" rows="10" class="harvester__input"></textarea>
+		<div class="harvester__util-bar">
+			<input id="file-upload" type="file">
+			<button id="submit-text">Harvest Links</button>
+		</div>
+		<div id="flash-container" class="flash flash--closed">
+			<div id="flash-message" class="flash__message">Don't forget to upload a file or paste in some text!</div>
+			<button id="flash-close" class="flash__close">X</button>
+		</div>
+		<div id="url-results" class="hide">
+			<div class="url-results__result">
+				<h3>Email Addresses</h3>
+				<ol id="harvest-emails" class="url-results__list">
+				</ol>
+			</div>
+			<div class="url-results__result">
+				<h3>Links</h3>
+				<ol id="harvest-links" class="url-results__list"></ol>
+			</div>
+			<button id="clear-all">Reset</button>
+		</div>
+	</div>
+</section>
+<script src="../../assets/js/harvester.bundle.js"></script>
+<script src="../../assets/js/index.bundle.js"></script>
+</body>
+</html>
