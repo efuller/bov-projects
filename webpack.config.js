@@ -16,13 +16,14 @@ const autoprefixer = require('autoprefixer');
  */
 const config = {
 	// The entry point of our app. Where our dependency graph starts.
-	entry: [
-		path.resolve(__dirname, 'src/scss/index.scss' ),
-		path.resolve(__dirname, 'src/index.js')
-	],
+	entry: {
+		harvester: path.resolve(__dirname, 'src/js/link-harvester/main.js'),
+		validator: path.resolve(__dirname, 'src/js/json-validator/main.js'),
+		index: path.resolve(__dirname, 'src/index.js')
+	},
 	// The output location for our compiled bundle.
 	output: {
-		filename: 'assets/js/bundle.js',
+		filename: 'assets/js/[name].bundle.js',
 		path: path.resolve(__dirname, '/'),
 		publicPath: 'http://localhost:8080/'
 	},
