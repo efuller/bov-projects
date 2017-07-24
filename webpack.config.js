@@ -17,6 +17,8 @@ const autoprefixer = require('autoprefixer');
 const config = {
 	// The entry point of our app. Where our dependency graph starts.
 	entry: {
+		dom: path.resolve(__dirname, 'src/js/dom-utilities/main.js'),
+		scroll: path.resolve(__dirname, 'src/js/scrollTo/main.js'),
 		harvester: path.resolve(__dirname, 'src/js/link-harvester/main.js'),
 		validator: path.resolve(__dirname, 'src/js/json-validator/main.js'),
 		index: path.resolve(__dirname, 'src/index.js')
