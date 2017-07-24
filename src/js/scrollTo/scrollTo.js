@@ -63,7 +63,11 @@ const ScrollTo = function () {
 
 	// Public function.
 	function scrollTo(target, options) {
-		defaultOptions.speed = options.speed || 40;
+		if (arguments[1]) {
+			defaultOptions.speed = options.speed || 30;
+		} else {
+			defaultOptions.speed = 30;
+		}
 		currentPosition = window.pageYOffset;
 
 		if (typeof target === 'number') {
