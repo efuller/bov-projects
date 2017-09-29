@@ -1,0 +1,79 @@
+//--------------------------------------------------------------
+// Puzzle
+//--------------------------------------------------------------
+.puzzle {
+	//margin: 0 auto;
+	//max-width: 868px;
+
+	&__viewport {
+		background: url("../images/unsolved.png") no-repeat;
+		height: 579px;
+		margin: 0 auto 50px;
+		padding-left: 43px;
+		padding-right: 43px;
+		padding-top: 43px;
+		width: 868px;
+	}
+
+	&__viewport__container {
+		overflow: auto;
+	}
+
+	&__pieces {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		overflow: scroll;
+	}
+
+	&__column {
+		float: left;
+	}
+
+	&__spot {
+		height: 97.8px;
+		position: relative;
+		width: 110.8px;
+
+		&::after {
+			content: attr(data-id);
+			left: 46px;
+			position: absolute;
+			top: 37px;
+		}
+	}
+
+	&__piece {
+		display: inline-block;
+		position: relative;
+		z-index: 999;
+	}
+
+	&__piece__number {
+		color: #fff;
+		left: 46px;
+		position: absolute;
+		top: 37px;
+	}
+
+	.target-overlay {
+
+		&:before {
+			background: rgba(goldenrod, 0.5);
+			bottom: 0;
+			content: "";
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+	}
+
+	.move-left {
+		margin-left: -27px;
+	}
+
+	.move-down {
+		margin-top: 47px;
+	}
+}
