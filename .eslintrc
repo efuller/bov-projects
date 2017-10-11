@@ -3,7 +3,8 @@
   "rules": {
     "func-names": ["error", "never"],
     "indent": [2, "tab"],
-    "no-tabs": 0
+    "no-tabs": 0,
+    "no-param-reassign": ["error", { "props": false }]
   },
   "parserOptions": {
     "sourceType": "module"
