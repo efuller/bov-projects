@@ -21,6 +21,7 @@ const config = {
 		scroll: path.resolve(__dirname, 'src/js/scrollTo/main.js'),
 		harvester: path.resolve(__dirname, 'src/js/link-harvester/main.js'),
 		validator: path.resolve(__dirname, 'src/js/json-validator/main.js'),
+		puzzle: path.resolve(__dirname, 'src/js/puzzle/main.js'),
 		index: path.resolve(__dirname, 'src/index.js')
 	},
 	// The output location for our compiled bundle.
