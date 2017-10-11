@@ -2,21 +2,40 @@
 // Puzzle
 //--------------------------------------------------------------
 .puzzle {
-	//margin: 0 auto;
-	//max-width: 868px;
 
 	&__viewport {
 		background: url("../images/unsolved.png") no-repeat;
 		height: 579px;
 		margin: 0 auto 50px;
+		overflow-x: hidden;
 		padding-left: 43px;
 		padding-right: 43px;
 		padding-top: 43px;
+		position: relative;
 		width: 868px;
 	}
 
-	&__viewport__container {
-		overflow: auto;
+	&__message-container {
+		align-items: center;
+		color: #fff;
+		display: flex;
+		height: 100%;
+		justify-content: center;
+		left: 0;
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		visibility: hidden;
+		width: 100%;
+		z-index: 9999;
+	}
+
+	&__message {
+		animation: scaleUp 0.75s forwards;
+		color: #fff;
+		font-size: 100px;
+		line-height: 1;
+		margin: 0;
 	}
 
 	&__pieces {
@@ -47,6 +66,10 @@
 		display: inline-block;
 		position: relative;
 		z-index: 999;
+
+		&--falling {
+			animation: 1s ease-out falling;
+		}
 	}
 
 	&__piece__number {
@@ -54,6 +77,19 @@
 		left: 46px;
 		position: absolute;
 		top: 37px;
+	}
+
+	&__hint {
+		left: 0;
+		position: absolute;
+		top: 0;
+		transform: translateX(100%);
+		transition: transform 0.3s ease-in-out;
+
+		&.visible {
+			transform: translateX(0);
+			transition: transform 0.3s ease-in-out;
+		}
 	}
 
 	.target-overlay {
@@ -75,5 +111,180 @@
 
 	.move-down {
 		margin-top: 47px;
+	}
+}
+
+@for $i from 5 through 45 {
+	.puzzle__piece[data-id="#{$i}"] {
+		animation-delay: unquote( (random(20) + 10) / 100  + "s" );
+	}
+}
+
+//--------------------------------------------------------------
+// Puzzle Info Bar
+//--------------------------------------------------------------
+.puzzle-info {
+	color: white;
+	position: relative;
+
+	&__list {
+		display: flex;
+		flex: 1;
+		list-style: none;
+	}
+
+	&__item {
+		margin-right: 20px;
+	}
+
+	&__container {
+		background: #DE395B;
+		height: 60px;
+		margin: 0 auto;
+		max-width: 868px;
+		overflow: hidden;
+		position: relative;
+		transition: opacity 0.3s ease-in;
+
+		&::before {
+			background: rgba(255,255,255, 0.1);
+			content: "";
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			transform: translateX(-100%);
+			transition: transform 0.75s ease-in-out;
+			width: calc(100% - 70px);
+		}
+
+		&--slide-out {
+
+			&::before {
+				transform: translateX(-100%);
+			}
+		}
+
+		&--slide-in {
+
+			&::before {
+				transform: translateX(0);
+			}
+		}
+	}
+
+	&__details {
+		align-items: center;
+		display: flex;
+		flex: 1;
+		justify-content: center;
+		position: relative;
+	}
+
+	&__timer-bar {
+		background: rgba(255, 255, 255, 0.1);
+		content: "";
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 3px;
+	}
+
+	&__panel {
+		align-items: center;
+		display: flex;
+		height: 100%;
+		justify-content: center;
+		left: 0;
+		opacity: 1;
+		position: absolute;
+		top: 0;
+		transform: translateY(0);
+		transition: opacity 0.3s, transform 0.3s;
+		width: 100%;
+
+		&.hide {
+			opacity: 0;
+			transform: translateY(100%);
+		}
+	}
+
+	&__form {
+		display: flex;
+		width: 100%;
+	}
+
+	&__button,
+	input[type="submit"] {
+		border-radius: 0;
+		height: 60px;
+		width: 70px;
+	}
+}
+
+.show {
+	opacity: 1;
+	visibility: visible;
+}
+
+//--------------------------------------------------------------
+// Helpers
+//--------------------------------------------------------------
+.display-flex {
+	display: flex;
+	width: 100%;
+}
+
+.visible {
+	opacity: 1;
+	visibility: visible;
+}
+
+//--------------------------------------------------------------
+// Animation Classes
+//--------------------------------------------------------------
+.fadeInAndUp {
+	animation: 0.5s ease-out fadeInAndUp;
+	//animation-delay: 0s !important;
+}
+
+
+//--------------------------------------------------------------
+// Animations
+//--------------------------------------------------------------
+@keyframes falling {
+	0% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(600px);
+	}
+}
+
+@keyframes fadeInAndUp {
+	0% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@keyframes scaleUp {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.25);
+	}
+	100% {
+		transform: scale(1);
 	}
 }
