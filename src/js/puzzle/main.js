@@ -233,6 +233,7 @@ class JigSaw {
 	hideHint() {
 		this.DOM.puzzleHint.classList.remove('visible');
 		Messages.clearMessage();
+		Messages.createMessage('Click Start to Begin!');
 
 		if (this.store.hints > 0 && this.store.started) {
 			this.store.hints = this.store.hints - 1;
