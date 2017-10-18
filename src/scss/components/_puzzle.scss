@@ -7,7 +7,7 @@
 		background: url("../images/unsolved.png") no-repeat;
 		height: 579px;
 		margin: 0 auto 50px;
-		overflow-x: hidden;
+		overflow: hidden;
 		padding-left: 43px;
 		padding-right: 43px;
 		padding-top: 43px;
@@ -36,6 +36,7 @@
 		font-size: 100px;
 		line-height: 1;
 		margin: 0;
+		text-align: center;
 	}
 
 	&__pieces {

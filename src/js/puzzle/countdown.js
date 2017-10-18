@@ -1,3 +1,5 @@
+import Messages from './messages'
+
 class Timer {
 	constructor(container, minutes) {
 		this.seconds = parseInt(minutes * 60);
@@ -27,7 +29,11 @@ class Timer {
 
 		if (this.duration <= 0) {
 			clearInterval(this.interval);
-			return {};
+			Messages.createMessage('Time Expired!!!');
+			return {
+				minutes: 0,
+				seconds: 0
+			};
 		}
 
 		return {
@@ -37,9 +43,6 @@ class Timer {
 	}
 
 	createTimer() {
-		// const interval = setInterval(() => {
-		// 	const timer = this.updateTimer(futureTime);
-		// }, 1000);
 
 		this.interval = setInterval(() => {
 			const time = this.updateTimer(this.duration);
@@ -50,6 +53,10 @@ class Timer {
 			this.width = this.width + increment;
 			this.timerBar.style.width = this.width + '%';
 		}, 1000);
+	}
+
+	deleteTimer() {
+		clearInterval(this.interval);
 	}
 }
 

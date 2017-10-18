@@ -8,20 +8,11 @@ import Messages from './messages';
 class JigSaw {
 
 	constructor() {
-		this.DOM = {
-			puzzleImagePieces: []
-		};
-		this.store = {
-			currentDropZone: null,
-			started: false,
-			level: false,
-			hints: 3
-		};
-
 		this.init();
 	}
 
 	init() {
+		this.initializeState();
 		this.createPuzzlePiece();
 		this.solvePuzzle();
 		this.cacheDOM();
@@ -44,24 +35,89 @@ class JigSaw {
 
 		this.updateHintsButton();
 		this.bindEvents();
+		Messages.createMessage('Select Level');
+	}
+
+	initializeState() {
+		this.DOM = {
+			puzzleImagePieces: []
+		};
+		this.store = {
+			currentDropZone: null,
+			started: false,
+			level: false,
+			hints: 3
+		};
 	}
 
 	updateHintsButton() {
 		this.DOM.puzzleHintBtn.innerHTML = this.store.hints !== 1 ? `${this.store.hints} Hints` : `${this.store.hints} Hint`;
 	}
 
-	start() {
-		this.store.started = true;
-
-		this.DOM.dropZones.forEach((dropZone) => {
-			dropZone.addEventListener('drop', this.handleDrop, false);
-			dropZone.addEventListener('dragenter', this.handleDragEnter, false);
-			dropZone.addEventListener('dragleave', this.handleDragLeave, false);
-			dropZone.addEventListener('dragover', this.handleDragOver, false);
-			dropZone.addEventListener('dragend', this.handleDragEnd, false);
+	resetForm() {
+		this.DOM.levelInputs.forEach((input) => {
+			input.checked = false;
 		});
+	}
 
-		this.timer.startTimer();
+	reset() {
+		this.DOM.timerBar.style.width = 0;
+		this.DOM.dropZones.forEach((dropZone) => {
+			dropZone.innerHTML = '';
+		});
+		this.initializeState();
+		this.createPuzzlePiece();
+		this.solvePuzzle();
+		this.cacheDOM();
+		this.bindEvents();
+		this.updateHintsButton();
+		Messages.createMessage('Select Level');
+
+		this.DOM.puzzleContainer.innerHTML = '';
+		if (this.store.level) {
+			this.DOM.infoPanelLevel.classList.add('hide');
+			this.DOM.infoPanelStats.classList.remove('hide');
+		}
+
+		if (!this.store.level) {
+			this.DOM.infoPanelLevel.classList.remove('hide');
+			this.DOM.infoPanelStats.classList.add('hide');
+		}
+		this.timer.deleteTimer();
+		this.timer = null;
+		this.resetForm();
+		this.updateStartButtonText();
+	}
+
+	start(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		if (!this.store.started) {
+			this.store.started = true;
+			Messages.clearMessage();
+			this.updateStartButtonText();
+
+			this.DOM.dropZones.forEach((dropZone) => {
+				dropZone.addEventListener('drop', this.handleDrop, false);
+				dropZone.addEventListener('dragenter', this.handleDragEnter, false);
+				dropZone.addEventListener('dragleave', this.handleDragLeave, false);
+				dropZone.addEventListener('dragover', this.handleDragOver, false);
+				dropZone.addEventListener('dragend', this.handleDragEnd, false);
+			});
+
+			this.timer.startTimer();
+
+		} else {
+			this.reset();
+		}
+	}
+
+	updateStartButtonText() {
+		if (this.store.started) {
+			this.DOM.puzzleStartBtn.innerHTML = 'Reset';
+		} else {
+			this.DOM.puzzleStartBtn.innerHTML = 'Start';
+		}
 	}
 
 	selectLevel(level) {
@@ -75,6 +131,8 @@ class JigSaw {
 		});
 
 		this.DOM.infoContainer.classList.add('puzzle-info__container--slide-in', 'transitioning');
+		Messages.createMessage('Click Start to Begin!');
+
 	}
 
 	handleInputChange(e) {
@@ -137,6 +195,7 @@ class JigSaw {
 		this.DOM.messageContainer = document.querySelector('.puzzle__message-container');
 		this.DOM.puzzleHint = document.querySelector('.puzzle__hint');
 		this.DOM.puzzleHintBtn = document.querySelector('.puzzle-info__hint');
+		this.DOM.timerBar = document.querySelector('.puzzle-info__timer-bar');
 	}
 
 	bindEvents() {
@@ -259,6 +318,8 @@ class JigSaw {
 			const data = e.dataTransfer.getData('text/plain');
 			e.target.appendChild(document.querySelector('.puzzle__piece[data-id="' + data + '"]'));
 		}
+
+		this.isPuzzleComplete();
 	}
 
 	handleDragEnter(e) {
@@ -309,6 +370,30 @@ class JigSaw {
 
 		console.log('DragOver', e.target);
 		return false;
+	}
+
+	isMatch(element) {
+		const puzzlePiece = element.querySelector('.puzzle__piece');
+
+		if (!puzzlePiece) {
+			return true;
+		}
+		const id = parseInt(element.getAttribute('data-id'), 10);
+		const pieceID = parseInt(element.querySelector('.puzzle__piece').getAttribute('data-id'), 10);
+
+		return id !== pieceID;
+	}
+
+	isPuzzleComplete() {
+		const completed = this.DOM.dropZones.some(this.isMatch);
+
+		if (!completed) {
+			Messages.createMessage('Nice Job!!!');
+			setTimeout(() => {
+				Messages.clearMessage();
+				this.reset();
+			}, 5000);
+		}
 	}
 
 	solvePuzzle() {

@@ -15,7 +15,9 @@ class Messages {
 	}
 
 	static clearMessage() {
-		Messages.getMessageContainer().innerHTML = '';
+		const messageContainer = Messages.getMessageContainer();
+		messageContainer.classList.remove('visible');
+		messageContainer.innerHTML = '';
 	}
 }
 
