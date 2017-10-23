@@ -48,7 +48,8 @@ class JigSaw {
 			currentDropZone: null,
 			started: false,
 			level: false,
-			hints: 3
+			hints: 3,
+			puzzlePieces: JigSaw.createPuzzlePiecesArray(5, 45)
 		};
 	}
 
@@ -258,16 +259,15 @@ class JigSaw {
 	}
 
 	createPuzzlePiece() {
-		const pieces = JigSaw.createPuzzlePiecesArray(5, 45);
-
-		pieces.forEach((pieceID) => {
-			const pieceImage = JigSaw.createPieceImageContainer(pieceID);
-			const imageNumber = JigSaw.createPieceImageNumber(pieceID);
-			const image = JigSaw.createPieceImage(pieceID);
+		this.DOM.puzzleImagePieces = this.store.puzzlePieces.map((piece) => {
+			const pieceImage = JigSaw.createPieceImageContainer(piece.id);
+			const imageNumber = JigSaw.createPieceImageNumber(piece.id);
+			const image = JigSaw.createPieceImage(piece.id);
 
 			pieceImage.appendChild(image);
 			pieceImage.appendChild(imageNumber);
-			this.DOM.puzzleImagePieces.push(pieceImage);
+
+			return pieceImage;
 		});
 	}
 
@@ -296,13 +296,19 @@ class JigSaw {
 		return pieceImage;
 	}
 
-	static createPuzzlePiecesArray(start, end) {
-		const puzzlePieces = [];
-		let beginning = start;
+	static createPuzzlePiecesArray(startID, endID) {
+		let start = startID;
 
-		while (beginning <= end) {
-			puzzlePieces.push(beginning);
-			beginning += 1;
+		const puzzlePieces = [];
+
+		while (start <= endID) {
+			const puzzlePiece = {
+				id: start,
+				solved: false
+			};
+			puzzlePieces.push(puzzlePiece);
+
+			start += 1;
 		}
 
 		return puzzlePieces;
