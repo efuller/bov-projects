@@ -16,8 +16,14 @@ class JigSaw {
 		this.createPuzzlePiece();
 		this.solvePuzzle();
 		this.cacheDOM();
+		this.bindFunctions();
+		this.updateHintsButton();
+		this.bindEvents();
 
+		Messages.createMessage('Select Level');
+	}
 
+	bindFunctions() {
 		this.handleDragOver = this.handleDragOver.bind(this);
 		this.handleDrop = this.handleDrop.bind(this);
 		this.handleDragEnter = this.handleDragEnter.bind(this);
@@ -32,10 +38,6 @@ class JigSaw {
 		this.showHint = this.showHint.bind(this);
 		this.hideHint = this.hideHint.bind(this);
 		this.updateHintsButton = this.updateHintsButton.bind(this);
-
-		this.updateHintsButton();
-		this.bindEvents();
-		Messages.createMessage('Select Level');
 	}
 
 	initializeState() {
@@ -50,6 +52,65 @@ class JigSaw {
 		};
 	}
 
+	cacheDOM() {
+		this.DOM.draggables = Array.from(document.querySelectorAll('.puzzle__piece'));
+		this.DOM.dropZones = Array.from(document.querySelectorAll('.puzzle__spot'));
+		this.DOM.puzzleContainer = document.querySelector('.puzzle__pieces');
+		this.DOM.docFrag = document.createDocumentFragment();
+		this.DOM.infoForm = document.querySelector('.puzzle-info__form');
+		this.DOM.infoContainer = document.querySelector('.puzzle-info__container');
+		this.DOM.infoPanelLevel = this.DOM.infoContainer.querySelector('.puzzle-info__panel--level');
+		this.DOM.infoPanelStats = this.DOM.infoContainer.querySelector('.puzzle-info__panel--stats');
+		this.DOM.puzzleStartBtn = document.getElementById('puzzle-start');
+		this.DOM.levelInputs = Array.from(document.querySelectorAll('.puzzle-info__input'));
+		this.DOM.messageContainer = document.querySelector('.puzzle__message-container');
+		this.DOM.puzzleHint = document.querySelector('.puzzle__hint');
+		this.DOM.puzzleHintBtn = document.querySelector('.puzzle-info__hint');
+		this.DOM.timerBar = document.querySelector('.puzzle-info__timer-bar');
+	}
+
+	bindEvents() {
+		this.DOM.draggables.forEach((draggable) => {
+			draggable.addEventListener('dragstart', JigSaw.handleDragStart, false);
+			draggable.addEventListener('animationend', this.onAnimationEnd);
+		});
+
+		this.DOM.levelInputs.forEach((input) => {
+			input.addEventListener('change', this.handleInputChange);
+		});
+
+		this.DOM.infoContainer.addEventListener('transitionend', this.onTransitionEnd);
+		this.DOM.infoForm.addEventListener('submit', this.handleFormSubmit);
+		this.DOM.puzzleStartBtn.addEventListener('click', this.start);
+		this.DOM.puzzleHintBtn.addEventListener('mousedown', this.showHint);
+		this.DOM.puzzleHintBtn.addEventListener('mouseup', this.hideHint);
+	}
+
+	onAnimationEnd(e) {
+		if (e.animationName === 'falling' && e.target.classList.contains('puzzle__piece--falling')) {
+			e.target.classList.remove('puzzle__piece--falling');
+			e.target.style.animationDelay = 0 + 's';
+			e.target.classList.add('fadeInAndUp');
+			this.DOM.puzzleContainer.appendChild(e.target);
+		}
+
+		if (e.animationName === 'fadeInAndUp' && e.target.classList.contains('fadeInAndUp')) {
+			e.target.classList.remove('fadeInAndUp');
+		}
+	}
+
+	onTransitionEnd(e) {
+		if (e.propertyName === 'transform' && e.currentTarget.classList.contains('puzzle-info__container')) {
+			if (e.propertyName === 'transform' && this.DOM.infoContainer.classList.contains('puzzle-info__container--slide-in')) {
+				this.DOM.infoContainer.classList.remove('puzzle-info__container--slide-in');
+				return;
+			}
+			this.DOM.infoContainer.classList.remove('transitioning');
+
+			this.showHideInfoPanels();
+		}
+	}
+
 	updateHintsButton() {
 		this.DOM.puzzleHintBtn.innerHTML = this.store.hints !== 1 ? `${this.store.hints} Hints` : `${this.store.hints} Hint`;
 	}
@@ -60,20 +121,30 @@ class JigSaw {
 		});
 	}
 
-	reset() {
+	resetPuzzle() {
 		this.DOM.timerBar.style.width = 0;
 		this.DOM.dropZones.forEach((dropZone) => {
 			dropZone.innerHTML = '';
 		});
+
 		this.initializeState();
 		this.createPuzzlePiece();
 		this.solvePuzzle();
 		this.cacheDOM();
 		this.bindEvents();
 		this.updateHintsButton();
+
 		Messages.createMessage('Select Level');
 
 		this.DOM.puzzleContainer.innerHTML = '';
+		this.showHideInfoPanels();
+		this.timer.deleteTimer();
+		this.timer = null;
+		this.resetForm();
+		this.updateStartButtonText();
+	}
+
+	showHideInfoPanels() {
 		if (this.store.level) {
 			this.DOM.infoPanelLevel.classList.add('hide');
 			this.DOM.infoPanelStats.classList.remove('hide');
@@ -83,15 +154,9 @@ class JigSaw {
 			this.DOM.infoPanelLevel.classList.remove('hide');
 			this.DOM.infoPanelStats.classList.add('hide');
 		}
-		this.timer.deleteTimer();
-		this.timer = null;
-		this.resetForm();
-		this.updateStartButtonText();
 	}
 
-	start(e) {
-		e.preventDefault();
-		e.stopPropagation();
+	start() {
 		if (!this.store.started) {
 			this.store.started = true;
 			Messages.clearMessage();
@@ -106,9 +171,8 @@ class JigSaw {
 			});
 
 			this.timer.startTimer();
-
 		} else {
-			this.reset();
+			this.resetPuzzle();
 		}
 	}
 
@@ -131,14 +195,16 @@ class JigSaw {
 		});
 
 		this.DOM.infoContainer.classList.add('puzzle-info__container--slide-in', 'transitioning');
-		Messages.createMessage('Click Start to Begin!');
 
+		Messages.createMessage('Click Start to Begin!');
 	}
 
 	handleInputChange(e) {
 		this.DOM.levelInputs.forEach((input) => {
 			this.DOM.messageContainer.classList.remove('visible');
+
 			Messages.clearMessage();
+
 			if (e.target !== input) {
 				input.checked = false;
 				return;
@@ -147,93 +213,28 @@ class JigSaw {
 		});
 	}
 
-	onAnimationEnd(e) {
-
-		if (e.animationName === 'falling' && e.target.classList.contains('puzzle__piece--falling')) {
-			e.target.classList.remove('puzzle__piece--falling');
-			e.target.style.animationDelay = 0 + 's';
-			e.target.classList.add('fadeInAndUp');
-			this.DOM.puzzleContainer.appendChild(e.target);
-		}
-
-		if (e.animationName === 'fadeInAndUp' && e.target.classList.contains('fadeInAndUp')) {
-			e.target.classList.remove('fadeInAndUp');
-		}
-	}
-
-	onTransitionEnd(e) {
-		if (e.propertyName === 'transform' && e.currentTarget.classList.contains('puzzle-info__container')) {
-			if (e.propertyName === 'transform' && this.DOM.infoContainer.classList.contains('puzzle-info__container--slide-in')) {
-				this.DOM.infoContainer.classList.remove('puzzle-info__container--slide-in');
-				return;
-			}
-			this.DOM.infoContainer.classList.remove('transitioning');
-
-			if (this.store.level) {
-				this.DOM.infoPanelLevel.classList.add('hide');
-				this.DOM.infoPanelStats.classList.remove('hide');
-			}
-
-			if (!this.store.level) {
-				this.DOM.infoPanelLevel.classList.remove('hide');
-				this.DOM.infoPanelStats.classList.add('hide');
-			}
-		}
-	}
-
-	cacheDOM() {
-		this.DOM.draggables = Array.from(document.querySelectorAll('.puzzle__piece'));
-		this.DOM.dropZones = Array.from(document.querySelectorAll('.puzzle__spot'));
-		this.DOM.puzzleContainer = document.querySelector('.puzzle__pieces');
-		this.DOM.docFrag = document.createDocumentFragment();
-		this.DOM.infoForm = document.querySelector('.puzzle-info__form');
-		this.DOM.infoContainer = document.querySelector('.puzzle-info__container');
-		this.DOM.infoPanelLevel = this.DOM.infoContainer.querySelector('.puzzle-info__panel--level');
-		this.DOM.infoPanelStats = this.DOM.infoContainer.querySelector('.puzzle-info__panel--stats');
-		this.DOM.puzzleStartBtn = document.getElementById('puzzle-start');
-		this.DOM.levelInputs = Array.from(document.querySelectorAll('.puzzle-info__input'));
-		this.DOM.messageContainer = document.querySelector('.puzzle__message-container');
-		this.DOM.puzzleHint = document.querySelector('.puzzle__hint');
-		this.DOM.puzzleHintBtn = document.querySelector('.puzzle-info__hint');
-		this.DOM.timerBar = document.querySelector('.puzzle-info__timer-bar');
-	}
-
-	bindEvents() {
-		this.DOM.draggables.forEach((draggable) => {
-			draggable.addEventListener('dragstart', this.handleDragStart, false);
-			draggable.addEventListener('animationend', this.onAnimationEnd);
-			draggable.addEventListener('drag', () => {
-				console.log('Drag:');
-			}, false);
-		});
-
-		this.DOM.levelInputs.forEach((input) => {
-			input.addEventListener('change', this.handleInputChange);
-		});
-
-		this.DOM.infoContainer.addEventListener('transitionend', this.onTransitionEnd);
-		this.DOM.infoForm.addEventListener('submit', this.handleFormSubmit);
-		this.DOM.puzzleStartBtn.addEventListener('click', this.start);
-		this.DOM.puzzleHintBtn.addEventListener('mousedown', this.showHint);
-		this.DOM.puzzleHintBtn.addEventListener('mouseup', this.hideHint);
-	}
-
 	showHint() {
 		if (!this.store.started) {
 			Messages.createMessage('Nice Try!');
 			return;
 		}
+
 		if (!this.store.hints > 0) {
 			Messages.createMessage('No Hints Left!');
 			return;
 		}
+
 		this.DOM.puzzleHint.classList.add('visible');
 	}
 
 	hideHint() {
 		this.DOM.puzzleHint.classList.remove('visible');
+
 		Messages.clearMessage();
-		Messages.createMessage('Click Start to Begin!');
+
+		if (!this.store.started) {
+			Messages.createMessage('Click Start to Begin!');
+		}
 
 		if (this.store.hints > 0 && this.store.started) {
 			this.store.hints = this.store.hints - 1;
@@ -257,7 +258,7 @@ class JigSaw {
 	}
 
 	createPuzzlePiece() {
-		const pieces = this.createPuzzlePiecesArray(5, 45);
+		const pieces = JigSaw.createPuzzlePiecesArray(5, 45);
 
 		pieces.forEach((piece) => {
 			let pieceImage = document.createElement('div');
@@ -280,7 +281,7 @@ class JigSaw {
 		});
 	}
 
-	createPuzzlePiecesArray(start, end) {
+	static createPuzzlePiecesArray(start, end) {
 		const puzzlePieces = [];
 		let beginning = start;
 
@@ -292,7 +293,7 @@ class JigSaw {
 		return puzzlePieces;
 	}
 
-	handleDragStart(e) {
+	static handleDragStart(e) {
 		console.log('DragStart:', e.target);
 		e.dataTransfer.setData('text/plain', e.target.dataset.id);
 		e.dataTransfer.dropEffect = 'copy';
@@ -308,8 +309,7 @@ class JigSaw {
 		const parent = this.findParentByClassName(e.target, 'current-target');
 		this.store.currentDropZone = parent;
 
-		// Going to hold a reference to the current dropzone because it's better to get a reference of it on DragOver.
-		if ( this.store.currentDropZone && this.store.currentDropZone.childElementCount > 0 ) {
+		if (this.store.currentDropZone && this.store.currentDropZone.childElementCount > 0) {
 			const el = this.store.currentDropZone.firstElementChild;
 			const removed = this.store.currentDropZone.removeChild(el);
 			this.DOM.puzzleContainer.appendChild(removed);
@@ -348,19 +348,17 @@ class JigSaw {
 		return false;
 	}
 
-	// make sure to clean up any drag operation
 	handleDragEnd(e) {
-		// restore the potential drop target styles
 		e.preventDefault();
 		e.stopPropagation();
+
 		console.log('DragEnd:', e.target);
 		console.log('currentDropZone:', this.store.currentDropZone);
 		this.store.currentDropZone.classList.remove('target-overlay');
+
 		return false;
 	}
 
-	// if the user drags over our list, show
-	// that it allows copy and highlight for better feedback
 	handleDragOver(e) {
 		e.stopPropagation();
 		e.preventDefault();
@@ -373,7 +371,7 @@ class JigSaw {
 		return false;
 	}
 
-	isMatch(element) {
+	static isMatch(element) {
 		const puzzlePiece = element.querySelector('.puzzle__piece');
 
 		if (!puzzlePiece) {
@@ -386,13 +384,13 @@ class JigSaw {
 	}
 
 	isPuzzleComplete() {
-		const completed = this.DOM.dropZones.some(this.isMatch);
+		const completed = this.DOM.dropZones.some(JigSaw.isMatch);
 
 		if (!completed) {
 			Messages.createMessage('Nice Job!!!');
 			setTimeout(() => {
 				Messages.clearMessage();
-				this.reset();
+				this.resetPuzzle();
 			}, 5000);
 		}
 	}
@@ -401,11 +399,10 @@ class JigSaw {
 		const viewport = document.querySelector('.puzzle__viewport');
 		const piecesArray = Array.from(viewport.querySelectorAll('.puzzle__spot'));
 
-
 		piecesArray.forEach((piece) => {
-			const id = parseInt(piece.getAttribute('data-id'));
-			// Find our puzzle image.
-			const image = this.DOM.puzzleImagePieces.filter(puzzleImage => parseInt(puzzleImage.getAttribute('data-id'), 10) === id );
+			const id = parseInt(piece.getAttribute('data-id'), 10);
+			const image = this.DOM.puzzleImagePieces.filter(puzzleImage => parseInt(puzzleImage.getAttribute('data-id'), 10) === id);
+
 			piece.appendChild(image[0]);
 		});
 	}

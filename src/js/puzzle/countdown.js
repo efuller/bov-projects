@@ -1,9 +1,9 @@
-import Messages from './messages'
+import Messages from './messages';
 
 class Timer {
 	constructor(container, minutes) {
-		this.seconds = parseInt(minutes * 60);
-		this.duration = parseInt(minutes * 60);
+		this.seconds = parseInt(minutes * 60, 10);
+		this.duration = parseInt(minutes * 60, 10);
 		this.container = document.querySelector(container);
 		this.timerBar = document.querySelector('.puzzle-info__timer-bar');
 		this.width = 0;
