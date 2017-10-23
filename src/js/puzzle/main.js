@@ -260,25 +260,40 @@ class JigSaw {
 	createPuzzlePiece() {
 		const pieces = JigSaw.createPuzzlePiecesArray(5, 45);
 
-		pieces.forEach((piece) => {
-			let pieceImage = document.createElement('div');
-			let imageNumber = document.createElement('span');
-			pieceImage.classList.add('puzzle__piece');
-			pieceImage.setAttribute('data-id', piece);
-			pieceImage.setAttribute('draggable', true);
-
-			imageNumber.classList.add('puzzle__piece__number');
-			imageNumber.innerHTML = piece;
-
-			const image = document.createElement('img');
-			image.setAttribute('src', '../drag-n-drop/images/puzzle/piece-' + piece + '.png');
-			image.setAttribute('data-id', piece);
-
+		pieces.forEach((pieceID) => {
+			const pieceImage = JigSaw.createPieceImageContainer(pieceID);
+			const imageNumber = JigSaw.createPieceImageNumber(pieceID);
+			const image = JigSaw.createPieceImage(pieceID);
 
 			pieceImage.appendChild(image);
 			pieceImage.appendChild(imageNumber);
 			this.DOM.puzzleImagePieces.push(pieceImage);
 		});
+	}
+
+	static createPieceImage(pieceID) {
+		const image = document.createElement('img');
+		image.setAttribute('src', '../drag-n-drop/images/puzzle/piece-' + pieceID + '.png');
+		image.setAttribute('data-id', pieceID);
+
+		return image;
+	}
+
+	static createPieceImageNumber(pieceID) {
+		const imageNumber = document.createElement('span');
+		imageNumber.classList.add('puzzle__piece__number');
+		imageNumber.innerHTML = pieceID;
+
+		return imageNumber;
+	}
+
+	static createPieceImageContainer(pieceID) {
+		const pieceImage = document.createElement('div');
+		pieceImage.classList.add('puzzle__piece');
+		pieceImage.setAttribute('data-id', pieceID);
+		pieceImage.setAttribute('draggable', true);
+
+		return pieceImage;
 	}
 
 	static createPuzzlePiecesArray(start, end) {
