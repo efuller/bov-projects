@@ -32,6 +32,7 @@
     "webpack-dev-server": "^2.4.2"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.6.1",
     "gh-pages": "^1.0.0"
   }
 }
