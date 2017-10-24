@@ -315,7 +315,6 @@ class JigSaw {
 	}
 
 	static handleDragStart(e) {
-		console.log('DragStart:', e.target);
 		e.dataTransfer.setData('text/plain', e.target.dataset.id);
 		e.dataTransfer.dropEffect = 'copy';
 
@@ -325,7 +324,6 @@ class JigSaw {
 	handleDrop(e) {
 		e.preventDefault();
 		e.stopPropagation();
-		console.log('Drop:', e.target);
 
 		const parent = this.findParentByClassName(e.target, 'current-target');
 		this.store.currentDropZone = parent;
@@ -347,7 +345,6 @@ class JigSaw {
 	handleDragEnter(e) {
 		e.stopPropagation();
 		e.preventDefault();
-		console.log('DragEnter:', e.target);
 		const parent = this.findParentByClassName(e.target, 'puzzle__spot');
 
 		if (this.store.currentDropZone && (parent !== this.store.currentDropZone)) {
@@ -360,7 +357,6 @@ class JigSaw {
 	handleDragLeave(e) {
 		e.stopPropagation();
 		e.preventDefault();
-		console.log('DragLeave:', e.target);
 
 		const parent = this.findParentByClassName(e.target, 'puzzle__spot');
 
@@ -373,8 +369,6 @@ class JigSaw {
 		e.preventDefault();
 		e.stopPropagation();
 
-		console.log('DragEnd:', e.target);
-		console.log('currentDropZone:', this.store.currentDropZone);
 		this.store.currentDropZone.classList.remove('target-overlay');
 
 		return false;
@@ -388,7 +382,6 @@ class JigSaw {
 		const parent = this.findParentByClassName(e.target, 'puzzle__spot');
 		parent.classList.add('current-target', 'target-overlay');
 
-		console.log('DragOver', e.target);
 		return false;
 	}
 
