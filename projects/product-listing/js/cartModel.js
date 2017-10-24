@@ -313,7 +313,7 @@ app.CartModel = ( function() {
 			return item.id !== id;
 		});
 
-		// If no items, reset the cart.
+		// If no items, resetPuzzle the cart.
 		if (newItems.length === 0) {
 			resetCart();
 			return false;
