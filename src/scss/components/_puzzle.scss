@@ -220,7 +220,10 @@
 	input[type="submit"] {
 		border-radius: 0;
 		height: 60px;
-		width: 70px;
+	}
+
+	&__hint {
+		width: 94px;
 	}
 }
 
