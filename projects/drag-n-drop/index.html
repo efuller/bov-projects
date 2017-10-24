@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>It's a Puzzle!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body class="drag-n-drop">
+<section class="page-content">
+<div class="puzzle">
+	<div class="puzzle-info">
+		<div class="puzzle-info__container">
+			<div class="puzzle-info__panel puzzle-info__panel--level">
+				<form class="puzzle-info__form" action="">
+					<ul class="puzzle-info__list">
+						<li class="puzzle-info__item">
+							<span class="puzzle-info__blurb">Select a level: </span>
+						</li>
+						<li class="puzzle-info__item">
+							<input id="puzzle__easy" class="puzzle-info__input" type="radio" name="easy" value="7">
+							<label for="puzzle__easy">Easy</label>
+						</li>
+						<li class="puzzle-info__item">
+							<input id="puzzle__medium" class="puzzle-info__input" type="radio" name="medium" value="5">
+							<label for="puzzle__medium">Medium</label>
+						</li>
+						<li class="puzzle-info__item">
+							<input id="puzzle_hard" class="puzzle-info__input" type="radio" name="hard" value="3">
+							<label for="puzzle_hard">Hard</label>
+						</li>
+					</ul>
+					<input class="puzzle-info__button" type="submit" name="select-level" value="Select">
+				</form>
+			</div>
+			<div class="puzzle-info__panel puzzle-info__panel--stats hide">
+				<div class="puzzle-info__container display-flex">
+					<button class="puzzle-info__button puzzle-info__hint"></button>
+					<div class="puzzle-info__details">
+						<div class="puzzle-info__timer-bar"></div>
+						<div class="puzzle-info__timer"></div>
+					</div>
+					<button id="puzzle-start" class="puzzle-info__button">Start</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="puzzle__viewport">
+		<div class="puzzle__message-container"></div>
+		<div class="puzzle__viewport__container">
+			<div class="puzzle__column">
+				<div class="puzzle__spot" data-id="45"></div>
+				<div class="puzzle__spot" data-id="44"></div>
+				<div class="puzzle__spot" data-id="27"></div>
+				<div class="puzzle__spot" data-id="26"></div>
+				<div class="puzzle__spot" data-id="23"></div>
+			</div>
+			<div class="puzzle__column move-left move-down">
+				<div class="puzzle__spot" data-id="43"></div>
+				<div class="puzzle__spot" data-id="42"></div>
+				<div class="puzzle__spot" data-id="25"></div>
+				<div class="puzzle__spot" data-id="24"></div>
+			</div>
+			<div class="puzzle__column move-left">
+				<div class="puzzle__spot" data-id="41"></div>
+				<div class="puzzle__spot" data-id="40"></div>
+				<div class="puzzle__spot" data-id="18"></div>
+				<div class="puzzle__spot" data-id="17"></div>
+				<div class="puzzle__spot" data-id="22"></div>
+			</div>
+			<div class="puzzle__column move-left move-down">
+				<div class="puzzle__spot" data-id="39"></div>
+				<div class="puzzle__spot" data-id="38"></div>
+				<div class="puzzle__spot" data-id="16"></div>
+				<div class="puzzle__spot" data-id="15"></div>
+			</div>
+			<div class="puzzle__column move-left">
+				<div class="puzzle__spot" data-id="37"></div>
+				<div class="puzzle__spot" data-id="36"></div>
+				<div class="puzzle__spot" data-id="14"></div>
+				<div class="puzzle__spot" data-id="13"></div>
+				<div class="puzzle__spot" data-id="21"></div>
+			</div>
+			<div class="puzzle__column move-left move-down">
+				<div class="puzzle__spot" data-id="35"></div>
+				<div class="puzzle__spot" data-id="34"></div>
+				<div class="puzzle__spot" data-id="12"></div>
+				<div class="puzzle__spot" data-id="11"></div>
+			</div>
+			<div class="puzzle__column move-left">
+				<div class="puzzle__spot" data-id="33"></div>
+				<div class="puzzle__spot" data-id="32"></div>
+				<div class="puzzle__spot" data-id="10"></div>
+				<div class="puzzle__spot" data-id="9"></div>
+				<div class="puzzle__spot" data-id="20"></div>
+			</div>
+			<div class="puzzle__column move-left move-down">
+				<div class="puzzle__spot" data-id="31"></div>
+				<div class="puzzle__spot" data-id="30"></div>
+				<div class="puzzle__spot" data-id="8"></div>
+				<div class="puzzle__spot" data-id="7"></div>
+			</div>
+			<div class="puzzle__column move-left">
+				<div class="puzzle__spot" data-id="29"></div>
+				<div class="puzzle__spot" data-id="28"></div>
+				<div class="puzzle__spot" data-id="6"></div>
+				<div class="puzzle__spot" data-id="5"></div>
+				<div class="puzzle__spot" data-id="19"></div>
+			</div>
+		</div><!-- .puzzle__viewport__container -->
+		<div class="puzzle__hint">
+			<img src="images/solved-puzzle.png" alt="Solved Puzzle Hint">
+		</div>
+	</div><!-- .puzzle__viewport -->
+	<div id="puzzle__pieces" class="puzzle__pieces"></div>
+</div>
+</section>
+<script src="../../js/puzzle.bundle.js"></script>
+<script src="../../js/index.bundle.js"></script>
+</body>
+</html>
