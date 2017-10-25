@@ -259,11 +259,9 @@ class JigSaw {
 	createPuzzlePiece() {
 		this.DOM.puzzleImagePieces = this.store.puzzlePieces.map((piece) => {
 			const pieceImage = JigSaw.createPieceImageContainer(piece.id);
-			const imageNumber = JigSaw.createPieceImageNumber(piece.id);
 			const image = JigSaw.createPieceImage(piece.id);
 
 			pieceImage.appendChild(image);
-			pieceImage.appendChild(imageNumber);
 
 			return pieceImage;
 		});
@@ -282,14 +280,6 @@ class JigSaw {
 		image.setAttribute('data-id', pieceID);
 
 		return image;
-	}
-
-	static createPieceImageNumber(pieceID) {
-		const imageNumber = document.createElement('span');
-		imageNumber.classList.add('puzzle__piece__number');
-		imageNumber.innerHTML = pieceID;
-
-		return imageNumber;
 	}
 
 	static createPieceImageContainer(pieceID) {
