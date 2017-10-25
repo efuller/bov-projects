@@ -1,9 +1,5 @@
-/**
- * Maybe Find a way to shuffle the the pieces?
- */
 import Timer from './countdown';
 import Messages from './messages';
-
 
 class JigSaw {
 
@@ -12,15 +8,17 @@ class JigSaw {
 	}
 
 	init() {
-		this.initializeState();
-		this.createPuzzlePiece();
-		this.solvePuzzle();
-		this.cacheDOM();
-		this.bindFunctions();
-		this.updateHintsButton();
-		this.bindEvents();
+		JigSaw.loading(() => {
+			this.initializeState();
+			this.createPuzzlePiece();
+			this.solvePuzzle();
+			this.cacheDOM();
+			this.bindFunctions();
+			this.updateHintsButton();
+			this.bindEvents();
 
-		Messages.createMessage('Select Level');
+			Messages.createMessage('Select Level');
+		});
 	}
 
 	bindFunctions() {
@@ -269,6 +267,13 @@ class JigSaw {
 
 			return pieceImage;
 		});
+	}
+
+	static loading(cb) {
+		setTimeout(() => {
+			document.querySelector('.loading').style.display = 'none';
+		}, 3000);
+		cb();
 	}
 
 	static createPieceImage(pieceID) {
