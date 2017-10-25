@@ -96,13 +96,14 @@
 	.target-overlay {
 
 		&:before {
-			background: rgba(goldenrod, 0.5);
+			background: rgba(#DE395B, 0.3);
 			bottom: 0;
 			content: "";
 			left: 0;
 			position: absolute;
 			right: 0;
 			top: 0;
+			z-index: 1000;
 		}
 	}
 
