@@ -1,0 +1,41 @@
+//--------------------------------------------------------------
+// Loading
+//--------------------------------------------------------------
+.loading {
+	background: #000;
+	bottom: 0;
+	height: 100vh;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 9999;
+
+	&__text {
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	&__message {
+		animation: pulse 1s infinite;
+		color: #fff;
+		font-size: 100px;
+		line-height: 1;
+		margin: 0;
+		text-align: center;
+	}
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.25);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
