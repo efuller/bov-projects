@@ -34,7 +34,7 @@ const dbOptions = {
  * @returns {string} The API url.
  */
 const createURL = ({ artist, album }) => {
-	return `http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=2537d223dfb430676c5ceb304042d647&artist=${artist}&album=${album}&format=json`
+	return `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=2537d223dfb430676c5ceb304042d647&artist=${artist}&album=${album}&format=json`
 };
 
 /**
