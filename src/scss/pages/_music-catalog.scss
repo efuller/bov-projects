@@ -1,0 +1,113 @@
+//--------------------------------------------------------------
+// Music Catalog Page
+//--------------------------------------------------------------
+.music-catalog {
+	.loading {
+
+		&.hide {
+			display: none;
+		}
+	}
+
+	.page-content {
+		margin: 0 auto;
+		max-width: 1400px;
+	}
+
+	.content {
+		background: none;
+	}
+
+	.header__title {
+		text-align: center;
+	}
+}
+
+.album-container {
+
+	@media screen and (min-width: $small-tablet) {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+
+.album {
+	background-size: cover;
+	color: $gray-1;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	min-height: 300px;
+
+	@media screen and (min-width: $mobile) {
+		flex: 1 1 320px;
+	}
+
+	&__meta {
+		background: rgba($gray-2, 0.5);
+		padding: 15px;
+	}
+}
+
+.album-details {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+
+	@media screen and (min-width: $tablet) {
+		align-items: flex-start;
+		flex-direction: row;
+	}
+
+	&-left,
+	&-right {
+		width: 100%;
+	}
+
+	&-left {
+
+		@media screen and (min-width: $tablet) {
+			margin-right: 15px;
+			max-width: 65%;
+			width: 100%;
+		}
+	}
+
+	&__image {
+		max-width: 400px;
+		width: 100%;
+	}
+
+	&__meta {
+		background: rgba($blue-2, 0.7);
+		color: $white;
+		display: flex;
+		flex-direction: column;
+		font-weight: 300;
+		justify-content: space-between;
+		padding: 10px;
+		text-align: left;
+
+		@media screen and (min-width: $tablet) {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
+
+	&__meta-bold {
+		font-weight: 700;
+	}
+
+	&__content,
+	&__tracks-container {
+		text-align: left;
+	}
+
+	&__tracks {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+}
